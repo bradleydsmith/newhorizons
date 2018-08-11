@@ -12,7 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	if (Auth::check()) {
+		if (Auth::user()->isAdmin()) {
+			return view('home');
+		} else {
+			return view('home');
+		}
+	}
+	return view('welcome');
 });
 
 Route::get('/booking', function () {
