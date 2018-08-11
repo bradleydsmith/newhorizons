@@ -35,7 +35,12 @@
             <!-- Navigation Bar -->
                 <div class="links">
                     <a href="/">Home</a>
+                    @isAdmin
+						<a href="">User Management</a>
+						<a href="">Car Management</a>
+					@else
                     <a href="{{ url('/booking') }}">Booking</a>
+                    @endisAdmin
                     <a href="{{ url('/faq') }}">FAQ</a>
                         <!-- Authentication Links -->
                         @guest
