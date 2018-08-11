@@ -31,6 +31,6 @@ class User extends Authenticatable
     const USER_TYPE = "user";
     
     public function isAdmin() {
-		return $this->type == ADMIN_TYPE;
+		return $this->type == SELF::ADMIN_TYPE;
 	}
 }
