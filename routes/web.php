@@ -30,6 +30,8 @@ Route::get('/faq', function () {
     return view('faq');
 });
 
+Route::resource('/addcar', 'CarsController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
