@@ -16,8 +16,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
                     <br>
                     <br>
                     ADD HISTORY PAGE
