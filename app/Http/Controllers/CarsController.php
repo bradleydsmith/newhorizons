@@ -91,4 +91,12 @@ class CarsController extends Controller
     {
         //
     }
+    
+    public function carsSortedByDistance(Request $request) {
+		$limit = $request->input('limit');
+		$lat = $request->input('lat');
+		$lng = $request->input('lng');
+		$cars = Cars::orderByRaw("(POW((lng-(" . $lng . ")),2) + POW((lat-(" . $lat . ")),2))", "asc")->limit($limit)->get();
+		return $cars;
+	}
 }

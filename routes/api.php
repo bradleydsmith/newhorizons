@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('geocode', 'GeocodeController@index')->name('geocode');
+Route::post('carssorted', 'CarsController@carsSortedByDistance');
