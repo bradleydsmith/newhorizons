@@ -27,6 +27,7 @@
 				currentLat = resu.results[0].locations[0].latLng.lat;
 				currentLng = resu.results[0].locations[0].latLng.lng;
 				clearMarkers();
+				clearCarList();
 				recenterMap(resu.results[0].locations[0].latLng.lat, resu.results[0].locations[0].latLng.lng);
 				getCars(currentLat, currentLng, DEFAULT_LIMIT);
 			}, error: function(xhr) {
@@ -39,6 +40,10 @@
 		for (i = 0; i < markers.length; i++) {
 			markers[i].remove();
 		}
+	}
+	function clearCarList() {
+		carListInner = document.getElementById('carListInner');
+		carListInner.innerHTML = '';
 	}
 	function recenterMap(lat, lng) {
 		mapcon.setView(new L.LatLng(lat, lng), 14);
@@ -56,10 +61,33 @@
 				}
 		});
 	}
+	function markerClick(e) {
+		window.location.hash = e.target.options.customId;
+	}
 	function addCars(cars) {
+		hiddenCar = document.getElementById('hiddenCar');
+		carListInner = document.getElementById('carListInner');
 		for (i = 0; i < cars.length; i++) {
 			car = cars[i];
-			markers.push(L.marker([car.lat, car.lng]).addTo(mapcon));
+			markers.push(L.marker([car.lat, car.lng], {customId: "car" + (i + 1)}).addTo(mapcon).on('click', markerClick));
+			carDiv = hiddenCar.cloneNode(true);
+			for (j = 0; j < carDiv.childNodes.length; j++) {
+				if (carDiv.childNodes[j].id == "carModel") {
+					carDiv.childNodes[j].innerHTML = car.model;
+				}
+				if (carDiv.childNodes[j].id == "carMake") {
+					carDiv.childNodes[j].innerHTML = car.make;
+				}
+				if (carDiv.childNodes[j].id == "carYear") {
+					carDiv.childNodes[j].innerHTML = car.year;
+				}
+				if (carDiv.childNodes[j].id == "carSeating") {
+					carDiv.childNodes[j].innerHTML = car.seating;
+				}
+			}
+			carDiv.id = "car" + (i + 1);
+			carDiv.style.display = "block";
+			carListInner.append(carDiv);
 		}
 	}
 	function minit() {
@@ -77,6 +105,18 @@
 		Address: <input type="text" id="addresstxt" value="">
 		<button type="button" onclick="goButton();">GO</button>
 		<div id="map"></div>
+    </div>
+    <br><br><br>
+    <div id="carListOutter">
+		<div id="hiddenCar" style="display: none;">
+			<span id="carMake"></span>
+			<span id="carModel"></span>
+			<span id="carYear"></span><br>
+			Seats: <span id="carSeating"></span>
+		</div>
+		<div id="carListInner">
+			
+		</div>
     </div>
 </div>
 <script>
