@@ -8,6 +8,6 @@ class Cars extends Model
 {
     protected $fillable = [
 
-        "make", "model" , "year" , "seating" , "rego"
+        "make", "model" , "year" , "seating" , "rego", "lat", "lng"
         ];
 }

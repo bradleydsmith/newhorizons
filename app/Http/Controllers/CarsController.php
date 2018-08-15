@@ -41,6 +41,8 @@ class CarsController extends Controller
         $cars->year = $request->input('year');
         $cars->seating = $request->input('seating');
 		$cars->rego = $request->input('rego');	
+		$cars->lat = $request->input('lat');
+		$cars->lng = $request->input('lng');
 		$cars->save();
 		return redirect('home');
     }
