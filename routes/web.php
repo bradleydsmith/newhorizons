@@ -30,6 +30,14 @@ Route::get('/faq', function () {
     return view('faq');
 });
 
+Route::get('/admin', function () {
+    return view('admin');
+});
+
+Route::get('/users', function () {
+    return view('users');
+});
+
 Route::resource('/addcar', 'CarsController');
 
 Auth::routes();
