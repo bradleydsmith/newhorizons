@@ -36,8 +36,8 @@
                 <div class="links">
                     <a href="/">Home</a>
                     @isAdmin
-						<a href="">User Management</a>
-						<a href="">Car Management</a>
+						<a href="/users">User Management</a>
+						<a href="/addcar">Car Management</a>
 					@else
                     <a href="{{ url('/booking') }}">Booking</a>
                     @endisAdmin
