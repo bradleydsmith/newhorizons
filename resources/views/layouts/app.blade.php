@@ -27,11 +27,12 @@
     <!-- Styles -->
     
 </head>
+<div id="wrapper">
 <body>
 
             <div class="content">
                 <div class="title m-b-md">
-                    New Horizons Car Sharing
+                    New Horizons
                 </div>
             <!-- Navigation Bar -->
                 <div class="links">
@@ -41,8 +42,8 @@
 						<a href="">Car Management</a>
 					@else
                     <a href="{{ url('/booking') }}">Booking</a>
-                    @endisAdmin
                     <a href="{{ url('/faq') }}">FAQ</a>
+                    @endisAdmin  
                         <!-- Authentication Links -->
                         @guest
                                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -71,4 +72,5 @@
         </main>
     </div>
 </body>
+</div>
 </html>

@@ -10,12 +10,13 @@
         <title>New Horizons - FAQ page</title>
 
     </head>
+<div id="wrapper">      
     <body>
         <br>
             <br>
              <div class="content">
                 <div class="title m-b-md">
-                    New Horizons Car Sharing
+                    New Horizons
                 </div>
 
             <!-- Navigation Bar -->
@@ -68,6 +69,7 @@ FAQ QUESTIONS
 
 
     </body>
+</div>    
 </html>
 
 <div class="footer">

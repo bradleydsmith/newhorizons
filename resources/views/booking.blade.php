@@ -10,12 +10,13 @@
         <title>New Horizons - Booking</title>
 
     </head>
+<div id="wrapper">      
     <body>
         <br>
             <br>
              <div class="content">
                 <div class="title m-b-md">
-                    New Horizons Car Sharing
+                    New Horizons
                 </div>
 
             <!-- Navigation Bar -->
@@ -78,7 +79,7 @@ Add box and image
 
 
     </body>
-
+</div> <!-- wrapper div -->
 
 </html>
 

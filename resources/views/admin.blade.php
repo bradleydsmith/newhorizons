@@ -11,12 +11,13 @@
         <title>New Horizons Car Sharing</title>
 
     </head>
+<div id="wrapper">  
     <body>
         <br>
             <br>
              <div class="content">
                 <div class="title m-b-md">
-                    New Horizons Car Sharing
+                    New Horizons
                 </div>
 
             <!-- Navigation Bar -->
@@ -50,7 +51,7 @@
 
 
 <div class="welcometext">
-@if(Auth::check())
+@if(Auth::check())  <!-- Change to isAdmin -->
 
 <!-- Start writing here -->
 This is an admin page.
@@ -74,7 +75,7 @@ Insert User logins/Data/Stats etc.
 
 
 </body>
-
+</div> <!-- div wrapper -->
 
 
 <div class="footer">

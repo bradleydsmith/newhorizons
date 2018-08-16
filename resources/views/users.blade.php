@@ -17,7 +17,7 @@
             <br>
              <div class="content">
                 <div class="title m-b-md">
-                    New Horizons Car Sharing
+                    New Horizons
                 </div>
 
             <!-- Navigation Bar -->
@@ -45,6 +45,8 @@
                     </ul>
                 </div>
 
+<br>
+<br>
 <!-- Start writing here -->
 
 <div class="welcometext">

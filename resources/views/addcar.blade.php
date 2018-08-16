@@ -26,12 +26,13 @@
     <!-- Styles -->
     
 </head>
+<div id="wrapper">  
 <body>
     <br>
         <br>
             <div class="content">
                 <div class="title m-b-md">
-                    New Horizons Car Sharing
+                    New Horizons
                 </div>
             <!-- Navigation Bar -->
                 <div class="links">
@@ -84,6 +85,7 @@
         </div>
     </div>
 </div>
+
         <main class="py-4">
             @yield('content')
         </main>
@@ -91,4 +93,5 @@
 
 </div>
 </body>
+</div> <!-- wrapper div -->
 </html>

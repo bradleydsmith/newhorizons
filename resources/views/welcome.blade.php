@@ -11,12 +11,13 @@
 
 
     </head>
+<div id="wrapper">    
     <body>
         <br>
             <br>
              <div class="content">
                 <div class="title m-b-md">
-                    New Horizons Car Sharing
+                    New Horizons
                 </div>
 
             <!-- Navigation Bar -->
@@ -52,7 +53,7 @@
 <br>
 <br>
 
-<img src="/images/horizon1.jpg" class="horizondp" alt="horizon picture" width="1000" height="500">
+<img src="/images/horizon1.jpg" alt="horizon picture" width="1000" height="500">
 
 
 
@@ -83,9 +84,8 @@ INSERT MORE TEXT HERE
 
 </div>
 
-
     </body>
-
+</div> <!-- wrapper div-->
     
 <div class="footer">
   <p>Copyright 2018</p>
