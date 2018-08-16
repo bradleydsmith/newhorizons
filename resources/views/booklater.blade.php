@@ -6,9 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{{asset('/css/global.css')}}" rel="stylesheet" >
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-         
-        <title>New Horizons Car Sharing</title>
 
+        <title>New Horizons - Booking</title>
 
     </head>
     <body>
@@ -20,7 +19,7 @@
                 </div>
 
             <!-- Navigation Bar -->
-              <div class="links">
+                <div class="links">
                     <a href="/">Home</a>
                     @isAdmin
 						<a href="/users">User Management</a>
@@ -28,7 +27,7 @@
 					@else
                     <a href="{{ url('/booking') }}">Booking</a>
                     <a href="{{ url('/faq') }}">FAQ</a>
-                    @endisAdmin            
+                    @endisAdmin       
                         <!-- Authentication Links -->
                         @guest
                                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -52,44 +51,18 @@
 <br>
 <br>
 
-<img src="/images/horizon1.jpg" class="horizondp" alt="horizon picture" width="1000" height="500">
-
-
-
-<br>
-<br>
-
-<!-- Start writing here -->
-
+<!-- Write here -->
 <div class="welcometext">
-
-Welcome to New Horizons. The Car Sharing website. 
-<br>
-INSERT MORE TEXT HERE
-<br>
-INSERT MORE TEXT HERE
-<br>
-INSERT MORE TEXT HERE
-<br>
-INSERT MORE TEXT HERE
-<br>
-INSERT MORE TEXT HERE
-<br>
-INSERT MORE TEXT HERE
-<br>
-INSERT MORE TEXT HERE
-<br>
-INSERT MORE TEXT HERE
+ Add Book Later form
+ <br>
+ Write Here
 
 </div>
 
+<!------------------>
 
-    </body>
+</body>
 
-    
-<div class="footer">
-  <p>Copyright 2018</p>
-</div>
 
 </html>
 

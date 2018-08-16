@@ -27,7 +27,8 @@
     
 </head>
 <body>
-
+    <br>
+        <br>
             <div class="content">
                 <div class="title m-b-md">
                     New Horizons Car Sharing
@@ -35,13 +36,8 @@
             <!-- Navigation Bar -->
                 <div class="links">
                     <a href="/admin">Admin Home</a>
-                    @isAdmin
-						<a href="/users">User Management</a>
-						<a href="/addcar">Car Management</a>
-					@else
-                    <a href="{{ url('/booking') }}">Booking</a>
-                    @endisAdmin
-                    <a href="{{ url('/faq') }}">FAQ</a>
+					<a href="/users">User Management</a>
+					<a href="/addcar">Car Management</a>
                         <!-- Authentication Links -->
                         @guest
                                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -62,7 +58,10 @@
                         @endguest
                     </ul>
                 </div>
-<br><br>
+<br>
+<br>
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -71,24 +70,25 @@
                 <div class="card-body">
 					<form method="post">
 					{{ csrf_field() }}
-						Make: <input type="text" name="make"> <br /><br />
-						Model: <input type="text" name="model"> <br /><br />
-						Year: <input type="text" name="year"> <br /><br />
-						Seating capacity: <input type="text" name="seating"> <br /><br />
-						Registration: <input type="text" name="rego"> <br /><br />
-						Latitude: <input type="text" name="lat"><br><br>
-						Longitude: <input type="text" name="lng"><br><br>
-						<input type="submit">
+						<label>Make:</label><input type="text" name="make"> <br /><br />
+						<label>Model:</label> <input type="text" name="model"> <br /><br />
+						<label>Year:</label> <input type="text" name="year"> <br /><br />
+						<label>Seating capacity:</label> <input type="text" name="seating"> <br /><br />
+						<label>Registration:</label> <input type="text" name="rego"> <br /><br />
+						<label>Latitude:</label> <input type="text" name="lat"><br><br>
+						<label>Longitude:</label> <input type="text" name="lng"><br><br>
+						<input type="submit" class="submitbtn">
 					</form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+
+</div>
 </body>
 </html>

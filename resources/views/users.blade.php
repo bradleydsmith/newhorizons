@@ -23,12 +23,8 @@
             <!-- Navigation Bar -->
                 <div class="links">
                     <a href="/admin">Admin Home</a>
-                    @isAdmin
-                        <a href="/users">User Management</a>
-                        <a href="/addcar">Car Management</a>
-                    @else
-                    <a href="{{ url('/booking') }}">Booking</a>
-                    @endisAdmin
+                    <a href="/users">User Management</a>
+                    <a href="/addcar">Car Management</a>
                         <!-- Authentication Links -->
                         @guest
                                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -48,25 +44,27 @@
                         @endguest
                     </ul>
                 </div>
-<br>
-<br>
-
 
 <!-- Start writing here -->
 
 <div class="welcometext">
-
+@if(Auth::check())
 <br>
 Insert User search function here
-
+<br>
 No Controller added yet
+</div>
+@endif
+        @if(Auth::guest())
+            <a href="/login" class="btn btn-info"> You need to login as admin to continue</a>
+            <br>
+        @endif
 
 </div>
 
+</body>
 
-    </body>
 
-    
 <div class="footer">
   <p>Copyright 2018</p>
 </div>

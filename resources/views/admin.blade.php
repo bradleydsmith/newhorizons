@@ -10,7 +10,6 @@
          
         <title>New Horizons Car Sharing</title>
 
-
     </head>
     <body>
         <br>
@@ -23,12 +22,8 @@
             <!-- Navigation Bar -->
                 <div class="links">
                     <a href="/admin">Admin Home</a>
-                    @isAdmin
-                        <a href="/users">User Management</a>
-                        <a href="/addcar">Car Management</a>
-                    @else
-                    <a href="{{ url('/booking') }}">Booking</a>
-                    @endisAdmin
+                    <a href="/users">User Management</a>
+                    <a href="/addcar">Car Management</a>
                         <!-- Authentication Links -->
                         @guest
                                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -52,19 +47,36 @@
 <br>
 
 
-<!-- Start writing here -->
+
 
 <div class="welcometext">
+@if(Auth::check())
 
+<!-- Start writing here -->
+This is an admin page.
 <br>
-This is an admin page
+Insert User logins/Data/Stats etc.
 
+
+<!------------------------>
+
+@endif
+
+
+</div>
+        @if(Auth::guest())
+            <a href="/login" class="btn btn-info"> You need to login as admin to continue</a>
+            <br>
+        @endif
+</div>
+<br>
 </div>
 
 
-    </body>
+</body>
 
-    
+
+
 <div class="footer">
   <p>Copyright 2018</p>
 </div>

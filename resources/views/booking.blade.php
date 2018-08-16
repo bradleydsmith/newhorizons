@@ -26,8 +26,8 @@
 						<a href="/addcar">Car Management</a>
 					@else
                     <a href="{{ url('/booking') }}">Booking</a>
-                    @endisAdmin
                     <a href="{{ url('/faq') }}">FAQ</a>
+                    @endisAdmin    
                         <!-- Authentication Links -->
                         @guest
                                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -55,17 +55,19 @@
 <div class="welcometext">
  @if(Auth::check())
 
-    
-<div>
-NOW YOU SEE ME
-<br>
-INSERT BOOKING STUFF
-
+<!-- Book now -->
+<div class = "booknow" >
+    <a href="/booknow" class="booknow"> Click here to book now</a>
 </div>
 
+<!-- Book Later -->    
+<div>
+    <a href="/booklater" class="booklater"> Click here to book later</a>
+</div>
+Add box and image
 @endif
-
             </div>
+
             @if(Auth::guest())
               <a href="/login" class="logbtn btn btn-info"> You need to login to make a booking</a>
               <br>
@@ -74,16 +76,9 @@ INSERT BOOKING STUFF
             @endif
             </div>
 
-</div>
-
-<div>
-    
-</div>
 
     </body>
 
-<div class="footer">
-  <p>Copyright 2018</p>
-</div>
+
 </html>
 

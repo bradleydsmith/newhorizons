@@ -26,8 +26,8 @@
 						<a href="/addcar">Car Management</a>
 					@else
                     <a href="{{ url('/booking') }}">Booking</a>
-                    @endisAdmin
                     <a href="{{ url('/faq') }}">FAQ</a>
+                    @endisAdmin
                         <!-- Authentication Links -->
                         @guest
                                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
