@@ -41,6 +41,8 @@ class CarsController extends Controller
         $cars->year = $request->input('year');
         $cars->seating = $request->input('seating');
 		$cars->rego = $request->input('rego');	
+		$cars->lat = $request->input('lat');
+		$cars->lng = $request->input('lng');
 		$cars->save();
 		return redirect('home');
     }
@@ -89,4 +91,12 @@ class CarsController extends Controller
     {
         //
     }
+    
+    public function carsSortedByDistance(Request $request) {
+		$limit = $request->input('limit');
+		$lat = $request->input('lat');
+		$lng = $request->input('lng');
+		$cars = Cars::orderByRaw("(POW((lng-(" . $lng . ")),2) + POW((lat-(" . $lat . ")),2))", "asc")->limit($limit)->get();
+		return $cars;
+	}
 }

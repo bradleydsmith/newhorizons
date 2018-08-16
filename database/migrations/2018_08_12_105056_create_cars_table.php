@@ -20,6 +20,8 @@ class CreateCarsTable extends Migration
 			$table->integer('year');
 			$table->integer('seating');
 			$table->string('rego');
+			$table->decimal('lat', 8, 4);
+			$table->decimal('lng', 8, 4);
             $table->timestamps();
         });
     }

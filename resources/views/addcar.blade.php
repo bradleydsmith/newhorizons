@@ -76,6 +76,8 @@
 						Year: <input type="text" name="year"> <br /><br />
 						Seating capacity: <input type="text" name="seating"> <br /><br />
 						Registration: <input type="text" name="rego"> <br /><br />
+						Latitude: <input type="text" name="lat"><br><br>
+						Longitude: <input type="text" name="lng"><br><br>
 						<input type="submit">
 					</form>
                 </div>
