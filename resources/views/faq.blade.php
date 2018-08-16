@@ -19,26 +19,35 @@
                 </div>
 
             <!-- Navigation Bar -->
-                <div class="links">
+              <div class="links">
                     <a href="/">Home</a>
+                    @isAdmin
+						<a href="/users">User Management</a>
+						<a href="/addcar">Car Management</a>
+					@else
                     <a href="{{ url('/booking') }}">Booking</a>
+                    @endisAdmin
                     <a href="{{ url('/faq') }}">FAQ</a>
+                        <!-- Authentication Links -->
+                        @guest
+                                <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                        @else
 
-                    @if (Route::has('login'))
-                    @auth  
-                    <a href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}</a>
-                    @else
-                    <a href="{{ route('register') }}">Register</a>
-                    <a href="{{ route('login') }}">Login</a>
-                    @endauth
-                    @endif
-                 </div>
-            </div>
+                                <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}</a>
 
 
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
 <br>
 <br>
 <div class="welcometext">

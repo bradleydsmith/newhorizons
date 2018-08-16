@@ -34,7 +34,7 @@
                 </div>
             <!-- Navigation Bar -->
                 <div class="links">
-                    <a href="/">Home</a>
+                    <a href="/admin">Admin Home</a>
                     @isAdmin
 						<a href="/users">User Management</a>
 						<a href="/addcar">Car Management</a>
