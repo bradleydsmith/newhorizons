@@ -62,7 +62,7 @@
 <br>
 <br>
 
-
+@if(Auth::check())  <!-- Change to isAdmin -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -85,6 +85,12 @@
         </div>
     </div>
 </div>
+@endif
+        @if(Auth::guest())
+            <a href="/login" class="btn btn-info"> You need to login as admin to continue</a>
+            <br>
+        @endif
+
 
         <main class="py-4">
             @yield('content')
