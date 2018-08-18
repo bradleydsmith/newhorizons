@@ -52,7 +52,7 @@
 <div class="welcometext">
 @if(Auth::check())
 <br>
-Insert User search function here
+Insert Users search function here
 <br>
 No Controller added yet
 </div>
