@@ -16,6 +16,7 @@
 	var currentLat = -37.814;
 	var currentLng = 144.96332;
 	var markers = [];
+	var userMarker;
 	function goButton() {
 		loc = document.getElementById('addresstxt').value;
 		$.ajax({url: "api/geocode",
@@ -45,8 +46,19 @@
 		carListInner = document.getElementById('carListInner');
 		carListInner.innerHTML = '';
 	}
+	function removeUserMarker() {
+		userMarker.remove();
+	}
+	function addUserMarker(lat, lng) {
+		icon = L.icon({
+			iconUrl: 'https://assets.mapquestapi.com/icon/v2/via-md-4a80f5.png'
+		});
+		userMarker = L.marker([lat, lng], {icon: icon}).addTo(mapcon);
+	}
 	function recenterMap(lat, lng) {
 		mapcon.setView(new L.LatLng(lat, lng), 14);
+		removeUserMarker();
+		addUserMarker(lat, lng);
 	}
 	function getCars(lat, lng, limit) {
 		$.ajax({url: "api/carssorted",
@@ -104,6 +116,7 @@
 			zoom: 14
 		});
 		getCars(currentLat, currentLng, DEFAULT_LIMIT);
+		addUserMarker(currentLat, currentLng);
 	}
 </script>
 <div class="container">
