@@ -75,6 +75,9 @@
 			markers.push(L.marker([car.lat, car.lng], {icon: icon, customId: "car" + (i + 1)}).addTo(mapcon).on('click', markerClick));
 			carDiv = hiddenCar.cloneNode(true);
 			for (j = 0; j < carDiv.childNodes.length; j++) {
+				if (carDiv.childNodes[j].id == "carMapId") {
+					carDiv.childNodes[j].innerHTML = (i+1);
+				}
 				if (carDiv.childNodes[j].id == "carModel") {
 					carDiv.childNodes[j].innerHTML = car.model;
 				}
@@ -112,6 +115,7 @@
     <br><br><br>
     <div id="carListOutter">
 		<div id="hiddenCar" style="display: none;">
+			<span id="carMapId"></span>. 
 			<span id="carMake"></span>
 			<span id="carModel"></span>
 			<span id="carYear"></span><br>
