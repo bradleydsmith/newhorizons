@@ -69,7 +69,10 @@
 		carListInner = document.getElementById('carListInner');
 		for (i = 0; i < cars.length; i++) {
 			car = cars[i];
-			markers.push(L.marker([car.lat, car.lng], {customId: "car" + (i + 1)}).addTo(mapcon).on('click', markerClick));
+			icon = L.icon({
+				iconUrl: 'https://assets.mapquestapi.com/icon/v2/marker-' + (i+1) + '.png'
+			});
+			markers.push(L.marker([car.lat, car.lng], {icon: icon, customId: "car" + (i + 1)}).addTo(mapcon).on('click', markerClick));
 			carDiv = hiddenCar.cloneNode(true);
 			for (j = 0; j < carDiv.childNodes.length; j++) {
 				if (carDiv.childNodes[j].id == "carModel") {
