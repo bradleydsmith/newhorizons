@@ -38,6 +38,10 @@ Route::get('/users', function () {
     return view('users');
 });
 
+Route::get('/booklater', function () {
+    return view('booklater');
+});
+
 Route::resource('/addcar', 'CarsController');
 
 Auth::routes();
