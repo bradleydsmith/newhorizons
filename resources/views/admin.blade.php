@@ -15,7 +15,20 @@ This is an admin page.
 <br>
 Insert User logins/Data/Stats etc.
 
+Add car list
 
+<!--     <div id="carListOutter">
+		<div id="hiddenCar" style="display: none;">
+			<span id="carMapId"></span>. 
+			<span id="carMake"></span>
+			<span id="carModel"></span>
+			<span id="carYear"></span><br>
+			Seats: <span id="carSeating"></span>
+		</div>
+		<div id="carListInner">
+			
+		</div>
+    </div> -->
 
 
 

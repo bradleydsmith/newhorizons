@@ -48,16 +48,13 @@
                     @isAdmin
 						<a href="">User Management</a>
 						<a href="">Car Management</a>
-					@else
-                    <a href="{{ url('/booking') }}">Booking</a>
-                    <a href="{{ url('/faq') }}">FAQ</a>
-                    @endisAdmin  
-                        <!-- Authentication Links -->
-<!--                         @guest
-                                <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                                <a href="{{ route('login') }}">{{ __('Login') }}</a> -->
-                        @else
-
+                         <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}</a>
+					       @else
+                                <a href="{{ url('/booking') }}">Booking</a>
+                                <a href="{{ url('/faq') }}">FAQ</a>
                                 <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -69,7 +66,7 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @endisAdmin
                     </ul>
                 </div>
             </div>

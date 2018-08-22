@@ -11,9 +11,9 @@
  @if(Auth::check())
 
 
-<div class="bookingbox"> 
+
 <!-- Book now -->      
-<div class = "booknow" >
+<div class = "bookingbox" >
     <img src="/images/booknowcar.png" alt="booknowcar" width="100" height="100">
     If you are ready to leave now 
     <a href="/booknow" class="bookbtn btn btn-info"> Book now</a>

@@ -121,8 +121,10 @@
 </script>
 <div class="container">
     <div>
-		Address: <input type="text" id="addresstxt" value="">
-		<button type="button" onclick="goButton();">GO</button>
+		<label class="col-sm-3 col-form-label">Address:</label><input type="text" class="col-md-5 form-control" id="addresstxt" value="">
+		<button type="button" class= "btn col-md-1" onclick="goButton();">GO</button>
+		<br>
+		<br>
 		<div id="map"></div>
     </div>
     <br><br><br>
