@@ -22,6 +22,15 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
+    <style>
+    body {     
+        background-image: url("images/car1.jpg");
+        height: 100%; 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    </style>
 
     <!-- Styles -->
     
@@ -44,9 +53,9 @@
                     <a href="{{ url('/faq') }}">FAQ</a>
                     @endisAdmin  
                         <!-- Authentication Links -->
-                        @guest
+<!--                         @guest
                                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                                <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a href="{{ route('login') }}">{{ __('Login') }}</a> -->
                         @else
 
                                 <a href="{{ route('logout') }}"

@@ -8,15 +8,19 @@
 
 
 <div class="welcometext">
-@if(Auth::check())  <!-- Change to isAdmin -->
+<!-- @if(Auth::check()) -->  <!-- Change to isAdmin -->
 
 <!-- Start writing here -->
 This is an admin page.
 <br>
 Insert User logins/Data/Stats etc.
 
+
+
+
+
 <!------------------------>
-@endif
+<!-- @endif -->
 
 </div>
         @if(Auth::guest())

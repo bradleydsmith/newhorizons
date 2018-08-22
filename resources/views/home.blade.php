@@ -18,7 +18,9 @@
                     @endif
                     <br>
                     <br>
-                    ADD HISTORY PAGE
+                    <!-- Start Writing here -->
+
+                    <!-------------------------->
                 </div>
             </div>
         </div>
