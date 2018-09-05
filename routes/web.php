@@ -11,6 +11,26 @@
 |
 */
 
+use Illuminate\Support\Facades\Input;
+use App\User;
+
+/* search route */
+Route::any('/search',function(){
+	$q = Input::get('q');
+	if($q != ""){
+		$user = User::where('name','LIKE','%'. $q .'%')
+						->orWhere('fname','LIKE', '%' . $q . '%')
+						->orWhere('lname','LIKE', '%' . $q . '%')
+						->orWhere('email','LIKE', '%' . $q . '%')
+						->get();
+		if(count($user) > 0)
+			return view('users')->withDetails($user)->withQuery($q); 
+	}
+	return view ('users')->withMessage("No Users found!");
+});
+
+
+
 Route::get('/', function () {
 	if (Auth::check()) {
 		if (Auth::user()->isAdmin()) {
@@ -30,9 +50,13 @@ Route::get('/faq', function () {
     return view('faq');
 });
 
+/*Admin to view car table  */
 Route::get('/admin', function () {
-    return view('admin');
+	$car = DB::select('SHOW TABLES');
+    return view('admin', compact('admin'));
 });
+
+
 
 Route::get('/users', function () {
     return view('users');

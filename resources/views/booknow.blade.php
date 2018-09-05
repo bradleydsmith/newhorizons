@@ -130,7 +130,7 @@
     <br><br><br>
     <div id="carListOutter">
 		<div id="hiddenCar" style="display: none;">
-			<span id="carMapId"></span>. 
+			<span id="carMapId"></span>
 			<span id="carMake"></span>
 			<span id="carModel"></span>
 			<span id="carYear"></span><br>
