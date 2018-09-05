@@ -7,33 +7,39 @@
 <div id="wrapper">
 
 
-<div class="welcometext">
-<!-- @if(Auth::check()) -->  <!-- Change to isAdmin -->
+<div class="bookingbox">
+@if(Auth::check())  <!-- Change to isAdmin -->
 
 <!-- Start writing here -->
-This is an admin page.
-<br>
-Insert User logins/Data/Stats etc.
 
-Add car list
+<table class="table table-striped">
+		<thead>
+			<tr>
 
-<!--     <div id="carListOutter">
-		<div id="hiddenCar" style="display: none;">
-			<span id="carMapId"></span>. 
-			<span id="carMake"></span>
-			<span id="carModel"></span>
-			<span id="carYear"></span><br>
-			Seats: <span id="carSeating"></span>
-		</div>
-		<div id="carListInner">
-			
-		</div>
-    </div> -->
+				<th>Car ID</th>
+				<th>Make</th>
+				<th>Model</th>
+				<th>Year</th>
+				<th>Seating</th>
+			</tr>
+		</thead>
+		@if(isset($cars))
+		<tbody>
+		@foreach ($cars as $car)	
+			<tr>
+				<th>{{ $car->model }}</th>
+				<th>{{ $car->year }}</th>
+			</tr>
+		</tbody>
+		@endforeach	
+	</table>
+	@endif
+
 
 
 
 <!------------------------>
-<!-- @endif -->
+@endif
 
 </div>
         @if(Auth::guest())

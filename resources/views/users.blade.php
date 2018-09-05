@@ -8,20 +8,56 @@
 
 <!-- Start writing here -->
 
-<div class="welcometext">
-@if(Auth::check())
-<br>
-Insert Users search function here
-<br>
-No Controller added yet
-</div>
+<div class="bookingbox">
+	
+
+@if(Auth::check()) 
+
+<form action="/search" method="POST" role="search">
+	{{csrf_field()}}
+		<input type="text" class="form-control" name="q" placeholder="Search users">
+		<br>
+		<br>
+			<button type="submit" class="btn btn-primary">Search
+	</button>
+</form>
+
+	<h3> Search Results </h3>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Username</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		@if(isset($details))
+		<tbody>
+			@foreach($details as $user)
+			<tr>
+				<td> {{ $user->name }} </td>
+				<td> {{ $user->fname }} </td>
+				<td> {{ $user->lname }} </td>
+				<td> {{ $user->email }} </td>
+				<td> {{ $user->status }} </td>
+			</tr>
+			@endforeach
+		</tbody>
+	</table>
+	@elseif(isset($message))
+	<p> {{ $message }} </p>
 @endif
+
+@endif
+
         @if(Auth::guest())
             <a href="/login" class="btn btn-info"> You need to login as admin to continue</a>
             <br>
         @endif
 
 </div>
-
+</div>
 @endsection
 
