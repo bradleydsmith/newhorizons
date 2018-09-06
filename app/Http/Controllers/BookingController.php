@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+use App\Cars;
+use App\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class BookingController extends Controller
 {
@@ -35,7 +38,18 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $carId = $request->input('carId');
+        $startTime = $request->input('startTime');
+        $endTime = $request->input('endTime');
+        $user = Auth::user();
+        $car = Cars::where('id', $carId)->first();
+        $booking = new Booking;
+        $booking->startTime = $startTime;
+        $booking->endTime = $endTime;
+        $booking->save();
+        $user->bookings()->save($booking);
+        $car->bookings()->save($booking);
+        return redirect('home');
     }
 
     /**

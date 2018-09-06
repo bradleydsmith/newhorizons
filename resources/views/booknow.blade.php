@@ -90,6 +90,14 @@
 			markers.push(L.marker([car.lat, car.lng], {icon: icon, customId: "car" + (i + 1)}).addTo(mapcon).on('click', markerClick));
 			carDiv = hiddenCar.cloneNode(true);
 			for (j = 0; j < carDiv.childNodes.length; j++) {
+				if (carDiv.childNodes[j].id == "carForm") {
+					for (k = 0; k < carDiv.childNodes[j].childNodes.length; k++) {
+						if (carDiv.childNodes[j].childNodes[k].id == "carId") {
+							carDiv.childNodes[j].childNodes[k].value = car.id;
+						}
+					}
+					//carDiv.childNodes[j].value = car.id;
+				}
 				if (carDiv.childNodes[j].id == "carMapId") {
 					carDiv.childNodes[j].innerHTML = (i+1);
 				}
@@ -138,6 +146,13 @@
 			<span id="carModel"></span>
 			<span id="carYear"></span><br>
 			Seats: <span id="carSeating"></span>
+			<form method="post" action="booking" id="carForm">
+				{{ csrf_field() }}
+				<input type="hidden" id="carId" name="carId" value="">
+				<input type="hidden" id="startTime" name="startTime" value="1234">
+				<input type="hidden" id="endTime" name="endTime" value="2345">
+				<input type="submit" value="Book">
+			</form>
 		</div>
 		<div id="carListInner">
 			
