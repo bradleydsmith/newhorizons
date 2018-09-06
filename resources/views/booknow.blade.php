@@ -19,6 +19,9 @@
 	var userMarker;
 	function goButton() {
 		loc = document.getElementById('addresstxt').value;
+		if (loc.includes(',') == false) {
+			loc = loc + " Victoria, Australia";
+		}
 		$.ajax({url: "api/geocode",
 			type: "POST",
 			data: { 'location': loc },
