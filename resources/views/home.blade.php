@@ -21,6 +21,9 @@
                     <!-- Start Writing here -->
 
                     <!-------------------------->
+                    @foreach ($bookings as $booking)
+						Booking ID: {{ $booking->id }}<br><br>
+                    @endforeach
                 </div>
             </div>
         </div>
