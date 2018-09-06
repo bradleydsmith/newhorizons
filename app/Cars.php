@@ -10,4 +10,9 @@ class Cars extends Model
 
         "make", "model" , "year" , "seating" , "rego", "lat", "lng"
         ];
+        
+	public function bookings() {
+		return $this->hasMany('App\Booking');
+	}
+	
 }
