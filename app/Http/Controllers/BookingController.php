@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Booking;
 use App\Cars;
 use App\User;
+use App\FLocationData;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -46,6 +47,9 @@ class BookingController extends Controller
         $booking = new Booking;
         $booking->startTime = $startTime;
         $booking->endTime = $endTime;
+        
+        $booking->trip = FLocationData::getTrip($car->lat, $car->lng);
+        
         $booking->save();
         $user->bookings()->save($booking);
         $car->bookings()->save($booking);
