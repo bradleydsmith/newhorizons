@@ -19,6 +19,7 @@ class CreateBookingsTable extends Migration
             $table->integer('endTime');
             $table->integer('user_id')->nullable();
             $table->integer('cars_id')->nullable();
+            $table->longtext('trip')->nullable();
             $table->timestamps();
         });
     }
