@@ -76,4 +76,4 @@ Route::get('/booknow', function () {
     return view('booknow');
 });
 
-Route::resource('/booking', 'BookingController');
+Route::resource('/book', 'BookingController');
