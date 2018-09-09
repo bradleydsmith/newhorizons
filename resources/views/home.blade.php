@@ -23,7 +23,12 @@
                     <!-------------------------->
                     @if(!empty($bookings))
                     @foreach ($bookings as $booking)
-						Booking ID: {{ $booking->id }}<br><br>
+						Booking ID: {{ $booking->id }}<br>
+						<form method="post" action="viewtrip">
+							{{ csrf_field() }}
+							<input type="hidden" name="bookingId" value="{{ $booking->id }}">
+							<input type="submit" value="View Trip">
+						</form><br>
                     @endforeach
                     @endif
                 </div>
