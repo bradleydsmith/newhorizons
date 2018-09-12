@@ -21,15 +21,8 @@
                     <!-- Start Writing here -->
 
                     <!-------------------------->
-                    @if(!empty($bookings))
-                    @foreach ($bookings as $booking)
-						Booking ID: {{ $booking->id }}<br>
-						<form method="post" action="viewtrip">
-							{{ csrf_field() }}
-							<input type="hidden" name="bookingId" value="{{ $booking->id }}">
-							<input type="submit" value="View Trip">
-						</form><br>
-                    @endforeach
+                    @if(!empty($tripUrl))
+						<img src="{{ $tripUrl }}">
                     @endif
                 </div>
             </div>

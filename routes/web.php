@@ -72,8 +72,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/viewtrip', 'ViewTripController@index')->name('viewtrip');
+
 Route::get('/booknow', function () {
     return view('booknow');
 });
 
-Route::resource('/booking', 'BookingController');
+Route::resource('/book', 'BookingController');
