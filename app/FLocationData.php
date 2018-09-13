@@ -46,6 +46,6 @@ class FLocationData
 			}
 		}
 		array_push($trip, array($dest->lat, $dest->lng));
-		return json_encode($trip);
+		return $trip;
 	}
 }

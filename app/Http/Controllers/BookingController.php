@@ -48,11 +48,22 @@ class BookingController extends Controller
         $booking->startTime = $startTime;
         $booking->endTime = $endTime;
         
-        $booking->trip = FLocationData::getTrip($car->lat, $car->lng);
+        $trip = FLocationData::getTrip($car->lat, $car->lng);
+        
+        $booking->trip = json_encode($trip);
+        
+        $lastLocIndex = count($trip)-1;
+        $newLat = $trip[$lastLocIndex][0];
+        $newLng = $trip[$lastLocIndex][1];
         
         $booking->save();
         $user->bookings()->save($booking);
         $car->bookings()->save($booking);
+        
+        $car->lat = (float) $newLat;
+        $car->lng = (float) $newLng;
+        $car->save();
+        
         return redirect('home');
     }
 
