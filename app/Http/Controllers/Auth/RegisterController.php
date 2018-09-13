@@ -53,10 +53,9 @@ class RegisterController extends Controller
             'fname' => 'required|string|min:3|max:16',
             'lname' => 'required|string|min:3|max:16',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|max:16|confirmed',
+            'password' => 'required|string|min:6|max:16|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|confirmed',
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
