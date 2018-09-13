@@ -77,7 +77,7 @@
 		});
 	}
 	function markerClick(e) {
-		window.location.hash = e.target.options.customId;
+		//window.location.hash = e.target.options.customId;
 	}
 	function addCars(cars) {
 		hiddenCar = document.getElementById('hiddenCar');
@@ -87,7 +87,17 @@
 			icon = L.icon({
 				iconUrl: 'https://assets.mapquestapi.com/icon/v2/marker-' + (i+1) + '.png'
 			});
-			markers.push(L.marker([car.lat, car.lng], {icon: icon, customId: "car" + (i + 1)}).addTo(mapcon).on('click', markerClick));
+			var carPop = new L.popup().setContent(
+				car.year + " " + car.make + " " + car.model + "<br>Seats: " + car.seating + "<br>" +
+				'<form style="display: inline-block;" method="post" action="book" id="carForm2">' +
+				'{{ csrf_field() }}' +
+				'<input type="hidden" id="carId" name="carId" value="' + car.id + '">' +
+				'<input type="hidden" id="startTime" name="startTime" value="1234">' +
+				'<input type="hidden" id="endTime" name="endTime" value="2345">' +
+				'<input type="submit" class="btn btn-primary btn-sm" value="Book">' +
+				'</form>'
+			);
+			markers.push(L.marker([car.lat, car.lng], {icon: icon, customId: "car" + (i + 1)}).addTo(mapcon).on('click', markerClick).bindPopup(carPop));
 			carDiv = hiddenCar.cloneNode(true);
 			for (j = 0; j < carDiv.childNodes.length; j++) {
 				if (carDiv.childNodes[j].id == "carForm") {
