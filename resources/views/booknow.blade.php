@@ -8,7 +8,7 @@
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
 <style>
 	#map {
-		height: 200px;
+		height: 500px;
 	}
 </style>
 <script>
@@ -119,6 +119,29 @@
 			carListInner.append(carDiv);
 		}
 	}
+	
+	L.Control.RecenterButton = L.Control.extend({
+		onAdd: function(map) {
+			var img = L.DomUtil.create('button');
+
+			img.innerHTML = 'RECENTER';
+			img.style.width = '40%';
+			img.style.height = '50px';
+        
+			img.onclick = function () { recenterMap(window.currentLat, window.currentLng) };
+
+			return img;
+		},
+
+		onRemove: function(map) {
+			// Nothing to do here
+		}
+	});
+
+	L.control.recenterbutton = function(opts) {
+		return new L.Control.RecenterButton(opts);
+	}
+
 	function minit() {
 		L.mapquest.key = 'KEY';
 		window.mapcon = L.mapquest.map('map', {
@@ -128,6 +151,8 @@
 		});
 		getCars(currentLat, currentLng, DEFAULT_LIMIT);
 		addUserMarker(currentLat, currentLng);
+		
+		window.mapcon.addControl(L.control.recenterbutton({position: "bottomright"}));
 	}
 </script>
 <div class="container">
