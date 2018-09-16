@@ -28,7 +28,14 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
+    public function redirectTo() {
+		if (session()->exists('carId')) {
+			return '/book';
+		} else {
+			return '/home';
+		}
+	}
 
     /**
      * Create a new controller instance.
