@@ -8,7 +8,7 @@
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
 <style>
 	#map {
-		height: 200px;
+		height: 500px;
 	}
 </style>
 <script>
@@ -77,7 +77,7 @@
 		});
 	}
 	function markerClick(e) {
-		window.location.hash = e.target.options.customId;
+		//window.location.hash = e.target.options.customId;
 	}
 	function addCars(cars) {
 		hiddenCar = document.getElementById('hiddenCar');
@@ -87,7 +87,17 @@
 			icon = L.icon({
 				iconUrl: 'https://assets.mapquestapi.com/icon/v2/marker-' + (i+1) + '.png'
 			});
-			markers.push(L.marker([car.lat, car.lng], {icon: icon, customId: "car" + (i + 1)}).addTo(mapcon).on('click', markerClick));
+			var carPop = new L.popup().setContent(
+				car.year + " " + car.make + " " + car.model + "<br>Seats: " + car.seating + "<br>" +
+				'<form style="display: inline-block;" method="post" action="book" id="carForm2">' +
+				'{{ csrf_field() }}' +
+				'<input type="hidden" id="carId" name="carId" value="' + car.id + '">' +
+				'<input type="hidden" id="startTime" name="startTime" value="1234">' +
+				'<input type="hidden" id="endTime" name="endTime" value="2345">' +
+				'<input type="submit" class="btn btn-primary btn-sm" value="Book">' +
+				'</form>'
+			);
+			markers.push(L.marker([car.lat, car.lng], {icon: icon, customId: "car" + (i + 1)}).addTo(mapcon).on('click', markerClick).bindPopup(carPop));
 			carDiv = hiddenCar.cloneNode(true);
 			for (j = 0; j < carDiv.childNodes.length; j++) {
 				if (carDiv.childNodes[j].id == "carForm") {
@@ -119,6 +129,29 @@
 			carListInner.append(carDiv);
 		}
 	}
+	
+	L.Control.RecenterButton = L.Control.extend({
+		onAdd: function(map) {
+			var img = L.DomUtil.create('button');
+
+			img.innerHTML = 'RECENTER';
+			img.style.width = '40%';
+			img.style.height = '50px';
+        
+			img.onclick = function () { recenterMap(window.currentLat, window.currentLng) };
+
+			return img;
+		},
+
+		onRemove: function(map) {
+			// Nothing to do here
+		}
+	});
+
+	L.control.recenterbutton = function(opts) {
+		return new L.Control.RecenterButton(opts);
+	}
+
 	function minit() {
 		L.mapquest.key = 'KEY';
 		window.mapcon = L.mapquest.map('map', {
@@ -128,6 +161,8 @@
 		});
 		getCars(currentLat, currentLng, DEFAULT_LIMIT);
 		addUserMarker(currentLat, currentLng);
+		
+		window.mapcon.addControl(L.control.recenterbutton({position: "bottomright"}));
 	}
 </script>
 <div class="container">
