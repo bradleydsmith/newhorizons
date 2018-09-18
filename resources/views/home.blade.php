@@ -17,20 +17,39 @@
                         </div>
                     @endif
                     <br>
-                    <br>
                     <!-- Start Writing here -->
-
+                    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Car</th>
+                            <th>Duration</th>
+                            <th>Date</th>
+                            <th>Paid</th>
+                            <th>View</th>
+                        </tr>
+                    </thead>
                     <!-------------------------->
+                    <tbody>
                     @if(!empty($bookings))
                     @foreach ($bookings as $booking)
-						Booking ID: {{ $booking->id }}<br>
-						<form method="post" action="viewtrip">
-							{{ csrf_field() }}
-							<input type="hidden" name="bookingId" value="{{ $booking->id }}">
-							<input type="submit" value="View Trip">
-						</form><br>
+                    <tr>
+						<td>{{ $booking->id }} </td>
+                        <td>{{ $booking->cars_id}} </td>
+                        <td>{{ $booking->startTime}}</td>
+                        <td>{{ $booking->created_at}}</td>
+                        <td>{{ $booking->paid}}</td>
+                        <td> <form method="post" action="viewtrip">
+                             {{ csrf_field() }}
+                             <input type="hidden" name="bookingId" value="{{ $booking->id }}">
+                             <input type="submit" class="btn btn-default btn-info" value="View Trip">
+                             </form> </td>
+
                     @endforeach
                     @endif
+                    </tr>
+                </tbody>
+
                 </div>
             </div>
         </div>
