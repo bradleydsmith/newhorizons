@@ -10,7 +10,6 @@
 
 <div class="bookingbox">
 	
-
 @if(Auth::check()) 
 
 <form action="/search" method="POST" role="search">

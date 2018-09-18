@@ -34,9 +34,9 @@ Route::any('/search',function(){
 Route::get('/', function () {
 	if (Auth::check()) {
 		if (Auth::user()->isAdmin()) {
-			return view('home');
+			return view('welcome');
 		} else {
-			return view('home');
+			return view('welcome');
 		}
 	}
 	return view('welcome');
