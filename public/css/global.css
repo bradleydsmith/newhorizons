@@ -5,8 +5,9 @@ html, body {
 	font-weight: 100;
 	height: 100vh;
 	margin: 0;
-    scroll-behavior: smooth;
-    background-color: #FFFAFA;
+  scroll-behavior: smooth;
+  /*background-color: #FFFAFA;*/
+
    /* border: 0;*/
 
 }
@@ -40,23 +41,27 @@ html, body {
     letter-spacing: .1rem;
     text-decoration: none;
     text-transform: uppercase;
+
     
 }
 
 .nav2 {
     width: 100%;   
+    height: auto;
     background-color: rgba(225, 225, 225, 0.7);
     padding: 20px;
     position: fixed;
     top: 0;
+    z-index: 999;
+
 }
 
 .thenav {
     width: 100%;   
     padding: 20px;
     position: fixed;
-    top: 0;
-    left: 650px;
+    top: 0px;
+    z-index: 999;
 }
 
 .linkref {
@@ -75,6 +80,7 @@ html, body {
 	letter-spacing: .1rem;
 	text-decoration: none;
 	text-transform: uppercase;
+
 }
 
 .m-b-md {
@@ -125,7 +131,7 @@ input {
     border: 1px solid grey;
     padding: 20px;
     margin: 25px;
-    margin-left: 600px;
+    
     text-align: center;
     border-radius: 10px;
     opacity: 0.9;
@@ -202,20 +208,14 @@ input {
     width: 100%;
     height: 100%;
     display: block; 
-/*    background-color: rgba(0, 0, 0, 0.5);
+/*  background-color: rgba(0, 0, 0, 0.5);
     padding: 150px;*/
  
 }
 
-.banner > .banner-image {
-    width: 100%;
-    height: 80%;
-    display: block;
-
-}
 
 
-.bigbtn {
+/*.bigbtn {
   display: inline-block;
   border-radius: 4px;
   background-color: #f4511e;
@@ -224,7 +224,8 @@ input {
   text-align: center;
   font-size: 28px;
   padding: 20px;
-  width: 200px;
+  width: auto;
+  height: auto;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
@@ -267,7 +268,8 @@ input {
   text-align: center;
   font-size: 28px;
   padding: 20px;
-  width: 200px;
+  width: auto;
+  height: auto;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
@@ -299,5 +301,10 @@ input {
 .bigbtn2:hover span:after {
   opacity: 1;
   bottom: 0;
-}
+}*/
 
+
+/*img {
+  width: 100%;
+  height: auto;
+}*/

@@ -12,17 +12,26 @@
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
 
 
-<!-- Insert Sexy Background -->
 
+<!-- 
 <div class="banner">
-    <img class="banner-image" src="images/banner1.jpg">
-    <button class="bigbtn" type="button" onClick="document.getElementById('bookme').scrollIntoView()"><span>Book Now</span></button>
-    <button class="bigbtn2" type="button" onClick="document.getElementById('booklater').scrollIntoView()"><span>Book Later</span></button>
-</div>
+<img class="banner-image" src="images/banner1.jpg">
+</div> -->
 </head>
 <body>
 
+<!-- <div class="thebox">
+
+<button class="bigbtn " type="button" onClick="document.getElementById('bookme').scrollIntoView()"><span>Book Now</span></button>
+<button class="bigbtn2" type="button" onClick="document.getElementById('booklater').scrollIntoView()"><span>Book Later</span></button>
+</div>
+ -->
+
+
 <style>
+
+
+
     #map {
         height: 500px;
     }
@@ -201,6 +210,10 @@
         <div id="map"></div>
     </div>
     <br><br><br>
+
+ <div class="bookingbox">   <!-- Temporary box -->
+<strong>[ Temporary box ]</strong>
+
     <div id="carListOutter">
         <div id="hiddenCar" style="display: none;">
             <span id="carMapId"></span>
@@ -221,6 +234,9 @@
         </div>
     </div>
 </div>
+
+</div>
+
 <script>
     minit();
 </script>  
