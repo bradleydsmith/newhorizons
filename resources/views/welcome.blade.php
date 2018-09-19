@@ -33,7 +33,7 @@
     #map {
         height: 500px;
     }
-
+</style>
 <script>
     var DEFAULT_LIMIT = 10;
     var currentLat = -37.814;
