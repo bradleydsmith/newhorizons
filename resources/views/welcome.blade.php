@@ -241,12 +241,57 @@
     minit();
 </script>  
 
-<!-- Write in here   -->
-
-
-
-
-<!--------------------->
+<div class="container">
+    <div>
+		<label class="col-sm-3 col-form-label">Address:</label><input type="text" class="col-md-5 form-control" id="addresstxt" value="">
+		<button type="button" class= "btn col-md-1" onclick="goButton();">GO</button>
+		<br>
+		<br>
+		<div id="map"></div>
+    </div>
+    <br><br><br>
+    <div id="carListOutter">
+		<div id="hiddenCar" style="display: none;">
+			<span id="carMapId"></span>
+			<span id="carMake"></span>
+			<span id="carModel"></span>
+			<span id="carYear"></span><br>
+			Seats: <span id="carSeating"></span>
+			<form method="post" action="book" id="carForm">
+				<input type="hidden" name="_token" value="kwMRyWiYVFUtyF99udLbZFLTbP611K0lFk5lFb83">
+				<input type="hidden" id="carId" name="carId" value="">
+				<input type="hidden" id="startTime" name="startTime" value="1234">
+				<input type="hidden" id="endTime" name="endTime" value="2345">
+				<input type="submit" value="Book">
+			</form>
+		</div>
+		<div id="carListInner">
+			
+		</div>
+		<div class="carInfo">
+			<p>Cars</p>
+			<ul style="text-align: left;">
+				<li>5 passengers</li>
+				<li>2 large suitcaases,2 small suitcases</li>
+				<li>automatic transmission</li>
+				<li>air conditioning</li>
+				<li>15 km/liters</li>
+			</ul>
+			<button class="carBook" type="submit">book now</button>
+		</div>
+		<div class="carInfo2">
+			<p>Cars</p>
+			<ul style="text-align: left;">
+				<li>5 passengers</li>
+				<li>2 large suitcaases,2 small suitcases</li>
+				<li>automatic transmission</li>
+				<li>air conditioning</li>
+				<li>15 km/liters</li>
+			</ul>
+			<button class="carBook2" type="submit">book now</button>
+		</div>
+    </div>
+</div>
 
 </div> <!-- wrapper div-->
 @endsection
