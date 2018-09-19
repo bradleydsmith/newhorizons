@@ -29,19 +29,13 @@
 
 
 <style>
-
+body {
 
 
     #map {
         height: 500px;
     }
-body {     
-        background-image: url("images/car1.jpg");
-        height: 100%; 
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
+body {
     .carInfo{
     	position:relative; 
     	border: 2px solid #333; 
