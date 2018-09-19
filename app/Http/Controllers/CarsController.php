@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cars;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class CarsController extends Controller
@@ -96,7 +97,10 @@ class CarsController extends Controller
 		$limit = $request->input('limit');
 		$lat = $request->input('lat');
 		$lng = $request->input('lng');
-		$cars = Cars::orderByRaw("(POW((lng-(" . $lng . ")),2) + POW((lat-(" . $lat . ")),2))", "asc")->limit($limit)->get();
+		$startTime = $request->input('startTime');
+		$endTime = $request->input('endTime');
+		//$cars = Cars::orderByRaw("(POW((lng-(" . $lng . ")),2) + POW((lat-(" . $lat . ")),2))", "asc")->limit($limit)->get();
+		$cars = DB::select("select * from cars WHERE id NOT IN (select cars_id from bookings WHERE " . $startTime . " between startTime AND endTime or " . $endTime . " between startTime AND endTime or (" . $startTime . " <= startTime AND " . $endTime . " > endTime)) ORDER BY " . "(POW((lng-(" . $lng . ")),2) + POW((lat-(" . $lat . ")),2))" . " ASC LIMIT " . $limit);
 		return $cars;
 	}
 }
