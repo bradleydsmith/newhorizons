@@ -35,13 +35,56 @@
     #map {
         height: 500px;
     }
-/* CSS can go in here if must */
-
-
-
-
-
-/* -----------------------------*/
+body {     
+        background-image: url("images/car1.jpg");
+        height: 100%; 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .carInfo{
+    	position:relative; 
+    	border: 2px solid #333; 
+    	background: white; 
+    	float: left; 
+    	width:100%; 
+    	line-height:30px;
+    	margin-bottom: 6.5%;
+    }
+    .carInfo p{
+    	float: left;
+    	width: 33%;
+    	margin: 6% 0 0 0;
+    }
+    .carInfo ul{
+    	float: left;
+    	width: 33%;
+    }
+    .carBook{
+    	margin: 6% 0 0 0;
+    	
+    }
+    .carInfo2{
+    	position:relative; 
+    	border: 2px solid #333; 
+    	background: white; 
+    	float: left; 
+    	width:100%; 
+    	line-height:30px;
+    }
+    .carInfo2 p{
+    	float: left;
+    	width: 33%;
+    	margin: 6% 0 0 0;
+    }
+    .carInfo2 ul{
+    	float: left;
+    	width: 33%;
+    }
+    .carBook2{
+    	margin: 6% 0 0 0;
+    	
+    }
 </style>
 
 
