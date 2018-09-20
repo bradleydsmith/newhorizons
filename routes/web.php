@@ -13,6 +13,7 @@
 
 use Illuminate\Support\Facades\Input;
 use App\User;
+use App\Cars;
 
 /* search route */
 Route::any('/search',function(){
@@ -28,6 +29,24 @@ Route::any('/search',function(){
 	}
 	return view ('users')->withMessage("No Users found!");
 });
+
+//maybe do this for car management
+
+Route::any('/carsearch',function(){
+	$p = Input::get('p');
+	if($p != ""){
+		$car = Cars::where('make','LIKE','%'. $p .'%')
+						->orWhere('model','LIKE', '%' . $p . '%')
+						->orWhere('year','LIKE', '%' . $p . '%')
+						->orWhere('seating','LIKE', '%' . $p . '%')
+						->orWhere('rego','LIKE', '%' . $p . '%')
+						->get();
+		if(count($car) > 0)
+			return view('carsmanage')->withDetails($car)->withQuery($p);
+	}
+	return view ('carsmanage')->withMessage("No Cars found!");
+});
+
 
 
 
@@ -60,6 +79,10 @@ Route::get('/admin', function () {
 
 Route::get('/users', function () {
     return view('users');
+});
+
+Route::get('/carsmanage', function () {
+    return view('carsmanage');
 });
 
 Route::get('/booklater', function () {
