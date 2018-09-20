@@ -41,7 +41,6 @@
         background-attachment: fixed;
     }
 
-
     </style>
 
     <!-- Styles -->
@@ -64,7 +63,8 @@
                  
                     <a href="/">Home</a>
                     @if(Auth::check())
-                    <a href="/home">Dashboard</a>                    
+                    <a href="/home">Dashboard</a>
+                    <a href="/booklater">Book Later</a>                      
                     @endif
                     <!-- <a href="{{ url('/booking') }}">Booking</a> -->
                     @isAdmin
@@ -77,7 +77,6 @@
                                 </div>
                         </div>
 					       @endisAdmin
-                           <a href="{{ url('/faq') }}">FAQ</a>
                            @guest
                                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
                                 <a href="{{ route('login') }}">{{ __('Login') }}</a>

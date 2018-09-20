@@ -4,6 +4,9 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- Fix layouts -->
+<div class="bookingbox">
+
 <script>
   $( function() {
     $( "#datepicker" ).datepicker();
@@ -149,6 +152,7 @@
 			
 		</div>
 		</div>
+</div> <!-- bookingbox -->
 
 </div>  <!--wrapper div -->
 </div>

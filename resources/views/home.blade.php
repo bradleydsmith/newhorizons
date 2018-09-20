@@ -18,19 +18,41 @@
                     @endif
                     <br>
                     <br>
-                    <!-- Start Writing here -->
+                    <!-- Show Booking history -->
 
-                    <!-------------------------->
+                    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Cars ID</th>
+                            <th>User Id</th>
+                            <th>Start Time</th>
+                            <th>End time</th>
+                            <th>Created on</th>
+                            <th>View Trip</th>
+                        </tr>
+                    </thead>
                     @if(!empty($bookings))
-                    @foreach ($bookings as $booking)
-						Booking ID: {{ $booking->id }}<br>
-						<form method="post" action="viewtrip">
-							{{ csrf_field() }}
-							<input type="hidden" name="bookingId" value="{{ $booking->id }}">
-							<input type="submit" value="View Trip">
-						</form><br>
-                    @endforeach
-                    @endif
+                    <tbody>
+                        @foreach ($bookings as $booking)
+                        <tr>
+                            <td> {{ $booking->id }} </td>
+                            <td> {{ $booking->cars_id }} </td>
+                            <td> {{ $booking->user_id }} </td>
+                            <td> {{ $booking->startTime }} </td>
+                            <td> {{ $booking->endTime }} </td>
+                            <td> {{ $booking->created_at }} </td>
+                            <td>   <form method="post" action="viewtrip">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="bookingId" value="{{ $booking->id }}">
+                                    <input class="btn btn-primary" type="submit" value="View Trip">
+                                    </form><br> </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                 @endif
+                    <!-------------------------->           
                 </div>
             </div>
         </div>

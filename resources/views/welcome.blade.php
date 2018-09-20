@@ -12,20 +12,8 @@
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
 
 
-
-<!-- 
-<div class="banner">
-<img class="banner-image" src="images/banner1.jpg">
-</div> -->
 </head>
 <body>
-
-<!-- <div class="thebox">
-
-<button class="bigbtn " type="button" onClick="document.getElementById('bookme').scrollIntoView()"><span>Book Now</span></button>
-<button class="bigbtn2" type="button" onClick="document.getElementById('booklater').scrollIntoView()"><span>Book Later</span></button>
-</div>
- -->
 
 
 <style>
@@ -34,6 +22,7 @@
         height: 500px;
     }
 </style>
+
 <script>
     var DEFAULT_LIMIT = 10;
     var currentLat = -37.814;
@@ -219,7 +208,7 @@
     </div>
     <br><br><br>
 
- <div class="bookingbox">   <!-- Temporary box -->
+<div class="carlistbox">   <!-- Temporary box -->
 <strong>[ Temporary box ]</strong>
 
     <div id="carListOutter">
@@ -250,32 +239,6 @@
 </script>  
 
 <div class="container">
-    <div>
-		<label class="col-sm-3 col-form-label">Address:</label><input type="text" class="col-md-5 form-control" id="addresstxt" value="">
-		<button type="button" class= "btn col-md-1" onclick="goButton();">GO</button>
-		<br>
-		<br>
-		<div id="map"></div>
-    </div>
-    <br><br><br>
-    <div id="carListOutter">
-		<div id="hiddenCar" style="display: none;">
-			<span id="carMapId"></span>
-			<span id="carMake"></span>
-			<span id="carModel"></span>
-			<span id="carYear"></span><br>
-			Seats: <span id="carSeating"></span>
-			<form method="post" action="book" id="carForm">
-				<input type="hidden" name="_token" value="kwMRyWiYVFUtyF99udLbZFLTbP611K0lFk5lFb83">
-				<input type="hidden" id="carId" name="carId" value="">
-				<input type="hidden" id="startTime" name="startTime" value="1234">
-				<input type="hidden" id="endTime" name="endTime" value="2345">
-				<input type="submit" value="Book">
-			</form>
-		</div>
-		<div id="carListInner">
-			
-		</div>
 		<div class="carInfo">
 			<p>Cars</p>
 			<ul style="text-align: left;">
