@@ -24,8 +24,9 @@
 
    
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -39,7 +40,6 @@
         background-size: cover;
         background-attachment: fixed;
     }
-
 
     </style>
 
@@ -63,7 +63,8 @@
                  
                     <a href="/">Home</a>
                     @if(Auth::check())
-                    <a href="/home">Dashboard</a>                    
+                    <a href="/home">Dashboard</a>
+                    <a href="/booklater">Book Later</a>                      
                     @endif
                     <!-- <a href="{{ url('/booking') }}">Booking</a> -->
                     @isAdmin
@@ -76,7 +77,6 @@
                                 </div>
                         </div>
 					       @endisAdmin
-                           <a href="{{ url('/faq') }}">FAQ</a>
                            @guest
                                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
                                 <a href="{{ route('login') }}">{{ __('Login') }}</a>

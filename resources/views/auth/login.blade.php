@@ -16,7 +16,7 @@
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                         @csrf
                         <!-- For the lols -->
-                        <img src="/images/carlogo.png" alt="carlogo" width="400" height="200">
+                        <img src="/images/carlogo.png" class="carlogo">
                         <br>
                         <br>
                         <!------------------>

@@ -12,40 +12,16 @@
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
 
 
-
-<!-- 
-<div class="banner">
-<img class="banner-image" src="images/banner1.jpg">
-</div> -->
 </head>
 <body>
-
-<!-- <div class="thebox">
-
-<button class="bigbtn " type="button" onClick="document.getElementById('bookme').scrollIntoView()"><span>Book Now</span></button>
-<button class="bigbtn2" type="button" onClick="document.getElementById('booklater').scrollIntoView()"><span>Book Later</span></button>
-</div>
- -->
 
 
 <style>
 
-
-
     #map {
         height: 500px;
     }
-/* CSS can go in here if must */
-
-
-
-
-
-/* -----------------------------*/
 </style>
-
-
-
 
 <script>
     var DEFAULT_LIMIT = 10;
@@ -100,9 +76,12 @@
         addUserMarker(lat, lng);
     }
     function getCars(lat, lng, limit) {
+        window.startTime = Math.floor(Date.now() / 1000);
+        addSeconds = Number(document.getElementById('timeSelector').value);
+        window.endTime = startTime + addSeconds;
         $.ajax({url: "api/carssorted",
             type: "POST",
-            data: { 'lng': lng, 'lat': lat, 'limit': limit },
+            data: { 'lng': lng, 'lat': lat, 'limit': limit, 'startTime': startTime, 'endTime': endTime },
             success: function(result) {
                 window.cresu = result;
                 addCars(result);
@@ -128,8 +107,8 @@
                 '<form style="display: inline-block;" method="post" action="book" id="carForm2">' +
                 '{{ csrf_field() }}' +
                 '<input type="hidden" id="carId" name="carId" value="' + car.id + '">' +
-                '<input type="hidden" id="startTime" name="startTime" value="1234">' +
-                '<input type="hidden" id="endTime" name="endTime" value="2345">' +
+                '<input type="hidden" id="startTime" name="startTime" value="' + startTime + '">' +
+                '<input type="hidden" id="endTime" name="endTime" value="' + endTime + '">' +
                 '<input type="submit" class="btn btn-primary btn-sm" value="Book">' +
                 '</form>'
             );
@@ -140,6 +119,12 @@
                     for (k = 0; k < carDiv.childNodes[j].childNodes.length; k++) {
                         if (carDiv.childNodes[j].childNodes[k].id == "carId") {
                             carDiv.childNodes[j].childNodes[k].value = car.id;
+                        }
+                        if (carDiv.childNodes[j].childNodes[k].id == "startTime") {
+                            carDiv.childNodes[j].childNodes[k].value = startTime;
+                        }
+                        if (carDiv.childNodes[j].childNodes[k].id == "endTime") {
+                            carDiv.childNodes[j].childNodes[k].value = endTime;
                         }
                     }
                     //carDiv.childNodes[j].value = car.id;
@@ -187,6 +172,12 @@
     L.control.recenterbutton = function(opts) {
         return new L.Control.RecenterButton(opts);
     }
+    
+    function changeTime() {
+        clearMarkers();
+        clearCarList();
+        getCars(currentLat, currentLng, DEFAULT_LIMIT);
+	}
 
     function minit() {
         L.mapquest.key = 'KEY';
@@ -204,14 +195,20 @@
 <div class="container" id="bookme">
     <div>
         <label class="col-sm-3 col-form-label">Address:</label><input type="text" class="col-md-5 form-control" id="addresstxt" value="">
-        <button type="button" class= "btn col-md-1" onclick="goButton();">GO</button>
+        <button type="button" class= "btn col-md-1" onclick="goButton();">GO</button><br>
+        <select id="timeSelector" onchange="changeTime(this.value);">
+			<option value="120">2 minutes</option>
+			<option value="1800">30 minutes</option>
+			<option value="3600">1 hour</option>
+			<option value="7200">2 hours</option>
+        </select>
         <br>
         <br>
         <div id="map"></div>
     </div>
     <br><br><br>
 
- <div class="bookingbox">   <!-- Temporary box -->
+<div class="carlistbox">   <!-- Temporary box -->
 <strong>[ Temporary box ]</strong>
 
     <div id="carListOutter">
@@ -241,12 +238,31 @@
     minit();
 </script>  
 
-<!-- Write in here   -->
-
-
-
-
-<!--------------------->
+<div class="container">
+		<div class="carInfo">
+			<p>Cars</p>
+			<ul style="text-align: left;">
+				<li>5 passengers</li>
+				<li>2 large suitcaases,2 small suitcases</li>
+				<li>automatic transmission</li>
+				<li>air conditioning</li>
+				<li>15 km/liters</li>
+			</ul>
+			<button class="carBook" type="submit">book now</button>
+		</div>
+		<div class="carInfo2">
+			<p>Cars</p>
+			<ul style="text-align: left;">
+				<li>5 passengers</li>
+				<li>2 large suitcaases,2 small suitcases</li>
+				<li>automatic transmission</li>
+				<li>air conditioning</li>
+				<li>15 km/liters</li>
+			</ul>
+			<button class="carBook2" type="submit">book now</button>
+		</div>
+    </div>
+</div>
 
 </div> <!-- wrapper div-->
 @endsection
