@@ -152,8 +152,7 @@
 			
 		</div>
 		</div>
-</div> <!-- bookingbox -->
-
+</div>
 </div>  <!--wrapper div -->
 </div>
 
