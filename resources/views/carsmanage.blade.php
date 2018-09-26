@@ -23,6 +23,7 @@
 </form>
 
 	<h3> Search Cars </h3>
+	<div class="table-responsive">
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -58,6 +59,7 @@
 			@endforeach
 		</tbody>
 	</table>
+	</div>
 	@elseif(isset($message))
 	<p> {{ $message }} </p>
 @endif

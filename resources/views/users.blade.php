@@ -22,6 +22,7 @@
 </form>
 
 	<h3> Search Results </h3>
+	<div class="table-responsive">
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -55,6 +56,7 @@
 			@endforeach
 		</tbody>
 	</table>
+	</div>
 	@elseif(isset($message))
 	<p> {{ $message }} </p>
 @endif
