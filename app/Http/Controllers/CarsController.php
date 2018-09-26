@@ -44,6 +44,7 @@ class CarsController extends Controller
 		$cars->rego = $request->input('rego');	
 		$cars->lat = $request->input('lat');
 		$cars->lng = $request->input('lng');
+		$cars->retired = false;
 		$cars->save();
 		return redirect('home');
     }
@@ -100,7 +101,7 @@ class CarsController extends Controller
 		$startTime = $request->input('startTime');
 		$endTime = $request->input('endTime');
 		//$cars = Cars::orderByRaw("(POW((lng-(" . $lng . ")),2) + POW((lat-(" . $lat . ")),2))", "asc")->limit($limit)->get();
-		$cars = DB::select("select * from cars WHERE id NOT IN (select cars_id from bookings WHERE " . $startTime . " between startTime AND endTime or " . $endTime . " between startTime AND endTime or (" . $startTime . " <= startTime AND " . $endTime . " > endTime)) ORDER BY " . "(POW((lng-(" . $lng . ")),2) + POW((lat-(" . $lat . ")),2))" . " ASC LIMIT " . $limit);
+		$cars = DB::select("select * from cars WHERE retired = false AND id NOT IN (select cars_id from bookings WHERE " . $startTime . " between startTime AND endTime or " . $endTime . " between startTime AND endTime or (" . $startTime . " <= startTime AND " . $endTime . " > endTime)) ORDER BY " . "(POW((lng-(" . $lng . ")),2) + POW((lat-(" . $lat . ")),2))" . " ASC LIMIT " . $limit);
 		return $cars;
 	}
 }

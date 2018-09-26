@@ -20,6 +20,7 @@ class CarsTableSeeder extends Seeder
         $car1->rego = "ABC123";
         $car1->lat = -37.8083;
         $car1->lng = 144.9688;
+        $car1->retired = false;
         $car1->save();
         
         $car2 = new Cars;
@@ -30,6 +31,7 @@ class CarsTableSeeder extends Seeder
         $car2->rego = "CBA321";
         $car2->lat = -37.8115;
         $car2->lng = 144.9646;
+        $car2->retired = false;
         $car2->save();
     }
 }
