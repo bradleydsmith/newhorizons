@@ -175,8 +175,10 @@
             var img = L.DomUtil.create('button');
 
             img.innerHTML = 'RECENTER';
-            img.style.width = '40%';
-            img.style.height = '50px';
+            //img.style.width = '40%';
+            //img.style.height = '50px';
+            img.classList.add("btn");
+			img.classList.add("btn-primary");
         
             img.onclick = function () { recenterMap(window.currentLat, window.currentLng) };
 
