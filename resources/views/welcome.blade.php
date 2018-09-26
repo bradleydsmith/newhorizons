@@ -213,9 +213,9 @@
 </script>
 <div class="container" id="bookme">
     <div>
-        <label class="col-sm-3 col-form-label">Address:</label><input type="text" class="col-md-5 form-control" id="addresstxt" value="">
-        <button type="button" class= "btn col-md-1" onclick="goButton();">GO</button><br>
-        <select id="timeSelector" onchange="changeTime(this.value);">
+        <input type="text" class="col-md-8 form-control" id="addresstxt" value="" placeholder="Address" style="margin-bottom:5px">
+        <button type="button" class="btn btn-primary col-md-2" onclick="goButton();" style="margin-bottom:5px">GO</button><br><br>
+        <select id="timeSelector" class="custom-select col-4" onchange="changeTime(this.value);">
 			<option value="120">2 minutes</option>
 			<option value="1800">30 minutes</option>
 			<option value="3600">1 hour</option>
