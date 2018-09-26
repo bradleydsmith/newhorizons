@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         //return view('home');
         $user = Auth::user();
-        $bookings = $user->bookings()->get();
+        $bookings = $user->bookings()->orderBy('id', 'DESC')->get();
         if (!empty($bookings)) {
 			for ($i = 0; $i < count($bookings); $i++) {
 				$startDate = DateTime::createFromFormat('U', $bookings[$i]->startTime);
