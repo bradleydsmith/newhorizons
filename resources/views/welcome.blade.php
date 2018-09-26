@@ -12,6 +12,7 @@
 </div>
 </div>
 @else
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <div id="wrapper">  
 <br>
 <br>
@@ -41,6 +42,16 @@
     #map {
         height: 500px;
     }
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+		.form-control {
+			font-size: 16px;
+		}
+	}
+	@media (min-width: 768px) {
+		.form-control {
+			font-size: 14px;
+		}
+	}
 </style>
 <script>
     var DEFAULT_LIMIT = 10;
@@ -194,6 +205,27 @@
         return new L.Control.RecenterButton(opts);
     }
     
+    L.Control.Addr = L.Control.extend({
+        onAdd: function(map) {
+            var img = L.DomUtil.create('div');
+            var addrbar = document.getElementById("addrbar");
+            img.innerHTML = addrbar.innerHTML;
+        
+            img.onclick = function () { recenterMap(window.currentLat, window.currentLng) };
+            L.DomEvent.disableClickPropagation(img)
+
+            return img;
+        },
+
+        onRemove: function(map) {
+            // Nothing to do here
+        }
+    });
+
+    L.control.addr = function(opts) {
+        return new L.Control.Addr(opts);
+    }
+    
     function changeTime() {
         clearMarkers();
         clearCarList();
@@ -209,22 +241,18 @@
         });
         getCars(currentLat, currentLng, DEFAULT_LIMIT);
         addUserMarker(currentLat, currentLng);
-        
+        window.mapcon.addControl(L.control.addr({position: "topright"}));
         window.mapcon.addControl(L.control.recenterbutton({position: "bottomright"}));
     }
+    
+    function search(e) {
+		if (e.keyCode == '13') {
+			goButton();
+		}
+	}
 </script>
 <div class="container" id="bookme">
     <div>
-        <input type="text" class="col-md-8 form-control" id="addresstxt" value="" placeholder="Address" style="margin-bottom:5px">
-        <button type="button" class="btn btn-primary col-md-2" onclick="goButton();" style="margin-bottom:5px">GO</button><br><br>
-        <select id="timeSelector" class="custom-select col-4" onchange="changeTime(this.value);">
-			<option value="120">2 minutes</option>
-			<option value="1800">30 minutes</option>
-			<option value="3600">1 hour</option>
-			<option value="7200">2 hours</option>
-        </select>
-        <br>
-        <br>
         <div id="map"></div>
     </div>
     <br><br><br>
@@ -254,7 +282,24 @@
 </div>
 
 </div>
-
+<div id="addrbar" style="display: none;">
+	<div class="container">
+		<div class="input-group col-md-12" style="margin-bottom: 5px">
+			<input type="text" class="form-control" id="addresstxt" onkeydown="search(event);" value="" placeholder="Address">
+			<div class="input-group-append">
+				<button type="button" class="btn btn-primary" onclick="goButton();">
+					<i class="fas fa-search-location"></i>
+				</button>
+			</div>
+		</div>
+		<select id="timeSelector" class="custom-select form-control col-8" onchange="changeTime(this.value);">
+			<option value="120">2 minutes</option>
+			<option value="1800">30 minutes</option>
+			<option value="3600">1 hour</option>
+			<option value="7200">2 hours</option>
+		</select>
+    </div>
+</div>
 <script>
     minit();
 </script>  
