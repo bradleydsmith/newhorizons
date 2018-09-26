@@ -10,19 +10,19 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
 
 
     <link href="{{asset('/css/global.css')}}" rel="stylesheet" >
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-   
+
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>New Horizons</title>
 
-   
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -33,16 +33,15 @@
 
     <!-- Styles: Background -->
     <style>
-    body {     
+    body {
         background-image: url("images/car1.jpg");
-        height: 100%; 
+        height: 100%;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         background-attachment: fixed;
     }
     </style>
-
 </head>
 
 <div id="wrapper">
@@ -50,18 +49,18 @@
 
             <div class="content">
             <!-- Navigation Bar -->
-                <div class="nav2">   
+                <div class="nav2">
                     <div class="logo">
                         New Horizons
-                    </div>        
+                    </div>
                 </div>
 
                 <div class="thenav  links">
-                 
+
                     <a href="/">Home</a>
                     @if(Auth::check())
                     <a href="/home">Dashboard</a>
-                    <a href="/booklater">Book Later</a>                        
+                    <a href="/booklater">Book Later</a>
                     @endif
                     <!-- <a href="{{ url('/booking') }}">Booking</a> -->
                     @isAdmin
@@ -69,7 +68,7 @@
                             <a class="dropbtn links" id="admin1">Admin</a>
                                 <div class="dropdown-content links">
                                     <a href="/users" id="linkref">User Management</a>
-                                    <a href="" id="linkref">Car Management</a> <!-- Insert Car management page link -->
+                                    <a href="/carsmanage" id="linkref">Car Management</a> <!-- Insert Car management page link -->
                                     <a href="/addcar" id="linkref">Add cars</a>
                                 </div>
                         </div>
@@ -77,7 +76,7 @@
                            @guest
                                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
                                 <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                           @else                             
+                           @else
                                 <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -87,11 +86,11 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li> 
+                            </li>
                     </ul>
                 </div>
             </div>
-     
+
         <main class="py-4">
             @yield('content')
         </main>
