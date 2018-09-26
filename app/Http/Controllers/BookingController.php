@@ -23,6 +23,9 @@ class BookingController extends Controller
 			$carId = session()->pull('carId');
 			$startTime = session()->pull('startTime');
 			$endTime = session()->pull('endTime');
+			if (Auth::user()->type == "suspended") {
+				return redirect('/');
+			}
 			$req = new \Illuminate\Http\Request();
 			$req->setMethod('POST');
 			$req->request->add(['carId' => $carId]);

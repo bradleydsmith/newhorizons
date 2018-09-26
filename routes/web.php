@@ -102,5 +102,6 @@ Route::get('/booknow', function () {
 });
 
 Route::post('/car/status', 'CarStatusController@index')->name('carstatus');
+Route::post('/user/status', 'UserStatusController@index')->name('userstatus');
 
 Route::resource('/book', 'BookingController');

@@ -40,7 +40,17 @@
 				<td> {{ $user->fname }} </td>
 				<td> {{ $user->lname }} </td>
 				<td> {{ $user->email }} </td>
-				<td> {{ $user->status }} </td>
+				<form method="post" action="/user/status">
+					{{ csrf_field() }}
+					<input type="hidden" name="userId" value="{{ $user->id }}">
+					@if($user->type == "suspended")
+						<input type="hidden" name="status" value="unsuspend">
+						<td><button class="btn btn-primary">Unsuspend</button></td>
+					@else
+						<input type="hidden" name="status" value="suspend">
+						<td><button class="btn btn-primary">Suspend</button></td>
+					@endif
+				</form>
 			</tr>
 			@endforeach
 		</tbody>

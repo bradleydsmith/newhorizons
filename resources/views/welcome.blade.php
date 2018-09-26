@@ -2,8 +2,16 @@
 <br>
 
 @extends('layouts.app')
-
 @section('content')
+@if(Auth::check() && Auth::user()->type == "suspended")
+<div id="wrapper">
+<div class="container">
+	<div class="bookingbox">
+		Sorry, your account has been suspended from making bookings.
+	</div>
+</div>
+</div>
+@else
 <div id="wrapper">  
 <br>
 <br>
@@ -302,4 +310,5 @@
 </div>
 
 </div> <!-- wrapper div-->
+@endif
 @endsection
