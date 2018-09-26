@@ -69,10 +69,10 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/home">Dashboard</a>
 				</li>
+				@endif
 				<li class="nav-item">
 					<a class="nav-link" href="/booklater">Book Later</a>
 				</li>
-				@endif
 				@isAdmin
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="adminDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
