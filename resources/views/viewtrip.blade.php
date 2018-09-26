@@ -16,13 +16,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <br>
-                    <br>
-                    <!-- Start Writing here -->
-
-                    <!-------------------------->
                     @if(!empty($tripUrl))
-						<img src="{{ $tripUrl }}">
+						<img style="width: 80%" src="{{ $tripUrl }}">
                     @endif
                 </div>
             </div>
