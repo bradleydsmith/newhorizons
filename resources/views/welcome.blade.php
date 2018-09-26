@@ -209,33 +209,25 @@
     <br><br><br>
 
 <div class="carlistbox">   <!-- Temporary box -->
-<strong>[ Car ]</strong>
 
     <div id="carListOutter">
-    	<p>Cars</p>
-			<ul style="text-align: left;">
-				<li>5 passengers</li>
-				<li>2 large suitcaases,2 small suitcases</li>
-				<li>automatic transmission</li>
-				<li>air conditioning</li>
-				<li>15 km/liters</li>
-			</ul>
-			<button class="carBook" type="submit">book now</button>
-		</div>
-			
-			<p>Cars</p>
-			<ul style="text-align: left;">
-				<li>5 passengers</li>
-				<li>2 large suitcaases,2 small suitcases</li>
-				<li>automatic transmission</li>
-				<li>air conditioning</li>
-				<li>15 km/liters</li>
-			</ul>
-			<button class="carBook2" type="submit">book now</button>
-		</div>
-		
-		
-        
+        <div id="hiddenCar" style="display: none;">
+            <span id="carMapId"></span>
+            <span id="carMake"></span>
+            <span id="carModel"></span>
+            <span id="carYear"></span><br>
+            Seats: <span id="carSeating"></span>
+            <form method="post" action="book" id="carForm">
+                {{ csrf_field() }}
+                <input type="hidden" id="carId" name="carId" value="">
+                <input type="hidden" id="startTime" name="startTime" value="1234">
+                <input type="hidden" id="endTime" name="endTime" value="2345">
+                <input type="submit" value="Book">
+            </form>
+        </div>
+        <div id="carListInner">
+            
+        </div>
     </div>
 </div>
 
@@ -245,9 +237,7 @@
     minit();
 </script>  
 
-
+</div>
 
 </div> <!-- wrapper div-->
-@endsection<?php
-
-?>
+@endsection
