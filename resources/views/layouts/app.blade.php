@@ -41,55 +41,68 @@
         background-size: cover;
         background-attachment: fixed;
     }
+    
+    .custnav {
+		background-color: rgba(225, 225, 225, 0.7);
+		font-family: Raleway,sans-serif;
+		font-weight: 600;
+	}
+	.navlink {
+		font-color: black;
+	}
     </style>
 </head>
 
 <div id="wrapper">
 <body>
-
-            <div class="content">
-            <!-- Navigation Bar -->
-                <div class="nav2">
-                    <div class="logo">
-                        New Horizons
-                    </div>
-                </div>
-
-                <div class="thenav  links">
-
-                    <a href="/">Home</a>
-                    @if(Auth::check())
-                    <a href="/home">Dashboard</a>
-                    <a href="/booklater">Book Later</a>
-                    @endif
-                    <!-- <a href="{{ url('/booking') }}">Booking</a> -->
-                    @isAdmin
-                        <div class="dropdown links">
-                            <a class="dropbtn links" id="admin1">Admin</a>
-                                <div class="dropdown-content links">
-                                    <a href="/users" id="linkref">User Management</a>
-                                    <a href="/carsmanage" id="linkref">Car Management</a> <!-- Insert Car management page link -->
-                                    <a href="/addcar" id="linkref">Add cars</a>
-                                </div>
-                        </div>
-					       @endisAdmin
-                           @guest
-                                <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                                <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                           @else
-                                <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}</a>
-                                @endguest
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                    </ul>
-                </div>
-            </div>
+	<nav class="navbar fixed-top navbar-light custnav navbar-expand-lg">
+		<span class="navbar-brand">New Horizons</span>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/">Home</a>
+				</li>
+				@if(Auth::check())
+				<li class="nav-item">
+					<a class="nav-link" href="/home">Dashboard</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/booklater">Book Later</a>
+				</li>
+				@endif
+				@isAdmin
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="adminDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Admin
+					</a>
+					<div class="dropdown-menu" aria-labelledby="adminDropdownMenuLink">
+						<a class="dropdown-item" href="/users">User Management</a>
+						<a class="dropdown-item" href="/carsmanage">Car Management</a>
+						<a class="dropdown-item" href="/addcar">Add Car</a>
+					</div>
+				</li>
+				@endisAdmin
+				@guest
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+				</li>
+				@else
+				<li class="nav-item">
+					<a class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" href="{{ route('logout') }}">{{ __('Logout') }}</a>
+				</li>
+				@endguest
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					@csrf
+                </form>
+			</ul>
+		</div>
+	</nav>
 
         <main class="py-4">
             @yield('content')

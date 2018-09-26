@@ -19,7 +19,7 @@
                     <br>
                     <br>
                     <!-- Show Booking history -->
-
+					<div class="table-responsive">
                     <table class="table table-striped">
                     <thead>
                         <tr>
@@ -49,6 +49,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                </div>
                  @endif
                     <!-------------------------->           
                 </div>

@@ -124,10 +124,8 @@ input {
 
 .bookingbox {
 	  background-color: white;
-    width: 700px;
     border: 1px solid grey;
     padding: 20px;
-    margin-left: 600px;
     text-align: center;
     border-radius: 10px;
     opacity: 0.9;
