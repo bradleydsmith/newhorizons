@@ -10,11 +10,11 @@ class Booking extends Model
         'startTime', 'endTime'
     ];
     
-	public function car() {
-		return $this->hasOne('App\Cars');
+	public function cars() {
+		return $this->belongsTo('App\Cars');
 	}
 	
 	public function user() {
-		return $this->hasOne('App\User');
+		return $this->belongsTo('App\User');
 	}
 }

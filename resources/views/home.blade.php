@@ -24,11 +24,10 @@
                     <thead>
                         <tr>
                             <th>Booking ID</th>
-                            <th>Cars ID</th>
-                            <th>User Id</th>
+                            <th>Car</th>
+                            <th>Registration No.</th>
                             <th>Start Time</th>
                             <th>End time</th>
-                            <th>Created on</th>
                             <th>View Trip</th>
                         </tr>
                     </thead>
@@ -37,11 +36,10 @@
                         @foreach ($bookings as $booking)
                         <tr>
                             <td> {{ $booking->id }} </td>
-                            <td> {{ $booking->cars_id }} </td>
-                            <td> {{ $booking->user_id }} </td>
+                            <td> {{ $booking->cars->year }} {{ $booking->cars->make }} {{ $booking->cars->model }}</td>
+                            <td> {{ $booking->cars->rego }}</td>
                             <td> {{ $booking->startTime }} </td>
                             <td> {{ $booking->endTime }} </td>
-                            <td> {{ $booking->created_at }} </td>
                             <td>   <form method="post" action="viewtrip">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="bookingId" value="{{ $booking->id }}">
