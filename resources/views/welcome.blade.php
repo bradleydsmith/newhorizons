@@ -239,8 +239,9 @@
         });
         getCars(currentLat, currentLng, DEFAULT_LIMIT);
         addUserMarker(currentLat, currentLng);
-        window.mapcon.addControl(L.control.addr({position: "topright"}));
         window.mapcon.addControl(L.control.recenterbutton({position: "bottomright"}));
+        window.mapcon.zoomControl.setPosition("bottomright");
+        window.mapcon.addControl(L.control.addr({position: "topleft"}));
     }
     
     function search(e) {
@@ -282,7 +283,7 @@
 </div>
 <div id="addrbar" style="display: none;">
 	<div class="container">
-		<div class="input-group col-md-12" style="margin-bottom: 5px">
+		<div class="input-group mb-2">
 			<input type="text" class="form-control" id="addresstxt" onkeydown="search(event);" value="" placeholder="Address">
 			<div class="input-group-append">
 				<button type="button" class="btn btn-primary" onclick="goButton();">
@@ -290,7 +291,7 @@
 				</button>
 			</div>
 		</div>
-		<select id="timeSelector" class="custom-select form-control col-8" onchange="changeTime(this.value);">
+		<select id="timeSelector" class="custom-select form-control col-12" onchange="changeTime(this.value);">
 			<option value="120">2 minutes</option>
 			<option value="1800">30 minutes</option>
 			<option value="3600">1 hour</option>
