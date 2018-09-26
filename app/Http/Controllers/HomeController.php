@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use View;
+use Stripe\Stripe;
+use Stripe\Customer;
+use Stripe\Charge;
 
 class HomeController extends Controller
 {
@@ -29,5 +32,7 @@ class HomeController extends Controller
         $user = Auth::user();
         $bookings = $user->bookings()->get();
         return View::make('home')->with('bookings', $bookings);
+		
     }
+
 }

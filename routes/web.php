@@ -56,8 +56,6 @@ Route::get('/admin', function () {
     return view('admin', compact('admin'));
 });
 
-
-
 Route::get('/users', function () {
     return view('users');
 });
@@ -66,11 +64,16 @@ Route::get('/booklater', function () {
     return view('booklater');
 });
 
+Route::post('/payment', 'StripeController@show_order');
+
 Route::resource('/addcar', 'CarsController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::post('/home', 'StripeController@postPaymentWithStripe')->name('paywithstripe');
 
 Route::post('/viewtrip', 'ViewTripController@index')->name('viewtrip');
 
@@ -78,4 +81,6 @@ Route::get('/booknow', function () {
     return view('booknow');
 });
 
-Route::resource('/book', 'BookingController');
+Route::post('/charge', 'HomeController@charge');
+#Route::resource('/book', 'HomeController');
+
