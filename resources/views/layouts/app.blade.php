@@ -31,6 +31,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
+    <!-- Styles: Background -->
     <style>
     body {     
         background-image: url("images/car1.jpg");
@@ -40,14 +41,10 @@
         background-size: cover;
         background-attachment: fixed;
     }
-
     </style>
 
-    <!-- Styles -->
- 
-
-
 </head>
+
 <div id="wrapper">
 <body>
 
@@ -64,7 +61,7 @@
                     <a href="/">Home</a>
                     @if(Auth::check())
                     <a href="/home">Dashboard</a>
-                    <a href="/booklater">Book Later</a>                      
+                    <a href="/booklater">Book Later</a>                        
                     @endif
                     <!-- <a href="{{ url('/booking') }}">Booking</a> -->
                     @isAdmin
