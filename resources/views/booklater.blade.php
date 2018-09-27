@@ -88,70 +88,100 @@
 
 <div id="wrapper">
 
-<div class="container">
-	<div class="book-form__text">
-		Choose your area:
-        <select name="location">
-			<option disabled>Location</option>
-			<option value="Melbourne CBD">Melbourne CBD</option>
-		</select>
-	</div>
-	
-	<div class="book-form__text">Car type:
-		<select name="type">
-			<option disabled>type</option>
-			<option value="coupe">coupe</option>
-			<option value="sedan">sedan</option>
-			<option value="SUV">SUV</option>
-		</select>
-	</div><br>
-	
-	<div class="book-form__text">
-		Date and Time<br>
-		<input type="text" id="datepicker" size="30">
-		<select id="time">
-			<option value="28800">08:00 AM</option>
-			<option value="32400">09:00 AM</option>
-			<option value="36000">10:00 AM</option>
-			<option value="39600">11:00 AM</option>
-			<option value="43200">12:00 PM</option>
-			<option value="46800">1:00 PM</option>
-			<option value="50400">2:00 PM</option>
-			<option value="54000">3:00 PM</option>
-			<option value="57600">4:00 PM</option>
-			<option value="61200">5:00 PM</option>
-			<option value="64800">6:00 PM</option>
-			<option value="68400">7:00 PM</option>
-			<option value="72000">8:00 PM</option>
-		</select>
-		<select id="hours">
-			<option value="3600">1 hour</option>
-			<option value="7200">2 hours</option>
-		</select>
-	</div>
-    <div class="book-form__text">
-		<button type="button" class="btn btn-primary" onclick="showCars()">Show available cars</button>
-	</div>
-	
-	    <div id="carListOutter">
+<br><br>
+<div class="bookingbox">
+	<table class="table table-striped">
+		  <tr>
+		    <th>Choose your Area:</th>
+		    <td>	
+		    		<select name="location">
+					<option disabled>Location</option>
+					<option value="Melbourne CBD">Melbourne CBD</option>
+					</select>
+			</td>
+		  </tr>
+
+		  <tr>
+		    <th>Car Type:</th>
+		    <td>
+		    		<select name="type">
+					<option disabled>type</option>
+					<option value="coupe">Coupe</option>
+					<option value="sedan">Sedan</option>
+					<option value="SUV">SUV</option>
+					</select>
+			</td>
+		  </tr>
+
+		  <tr>
+		    <th>Choose a date:</th>
+		    <td> <input placeholder="Select a date"type="text" id="datepicker" size="15">  </td>
+		  </tr>
+
+		  <tr>
+		    <th>Choose a time:</th>
+		    <td>
+		    	<select id="time">
+				<option value="28800">08:00 AM</option>
+				<option value="32400">09:00 AM</option>
+				<option value="36000">10:00 AM</option>
+				<option value="39600">11:00 AM</option>
+				<option value="43200">12:00 PM</option>
+				<option value="46800">1:00 PM</option>
+				<option value="50400">2:00 PM</option>
+				<option value="54000">3:00 PM</option>
+				<option value="57600">4:00 PM</option>
+				<option value="61200">5:00 PM</option>
+				<option value="64800">6:00 PM</option>
+				<option value="68400">7:00 PM</option>
+				<option value="72000">8:00 PM</option>
+				</select>
+		    </td>
+		  </tr>
+
+		  <tr>
+		    <th>Number of Hours</th>
+		    <td>
+		    	<select id="hours">
+				<option value="3600">1 hour</option>
+				<option value="7200">2 hours</option>
+				</select>
+			</td>
+		  </tr>
+
+		  <tr>
+		    <th></th>
+		    <td>
+				<button type="button" class="btn btn-primary" onclick="showCars()">Show available cars</button>
+			</td>
+		  </tr>
+	</table>
+</div>
+
+	<table class="table table-striped">
+
+	    <div "id="carListOutter">
 		<div id="hiddenCar" style="display: none;">
-			<span id="carMapId"></span>
-			<span id="carMake"></span>
-			<span id="carModel"></span>
-			<span id="carYear"></span><br>
-			Seats: <span id="carSeating"></span>
+			ID: <span id="carMapId"></span><br>
+			Make: <span id="carMake"></span><br>
+			Model: <span id="carModel"></span><br>
+			Year: <span id="carYear"></span><br>
+			Seats: <span id="carSeating"></span><br>
 			<form method="post" action="book" id="carForm">
 				{{ csrf_field() }}
 				<input type="hidden" id="carId" name="carId" value="">
 				<input type="hidden" id="startTime" name="startTime" value="1234">
 				<input type="hidden" id="endTime" name="endTime" value="2345">
-				<input type="submit" value="Book">
+				<input class="btn btn-primary" type="submit" value="Book">
 			</form>
+			<br><br>
 		</div>
 		<div id="carListInner">
 			
 		</div>
 		</div>
+
+	</table>
 </div>
 </div>  <!--wrapper div -->
 </div>
