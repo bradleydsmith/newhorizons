@@ -21,6 +21,7 @@ class CarsTableSeeder extends Seeder
         $car1->lat = -37.8083;
         $car1->lng = 144.9688;
         $car1->retired = false;
+        $car1->pph = 15.00;
         $car1->save();
         
         $car2 = new Cars;
@@ -32,6 +33,7 @@ class CarsTableSeeder extends Seeder
         $car2->lat = -37.8115;
         $car2->lng = 144.9646;
         $car2->retired = false;
+        $car2->pph = 20.00;
         $car2->save();
     }
 }

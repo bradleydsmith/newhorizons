@@ -167,7 +167,7 @@
 			Model: <span id="carModel"></span><br>
 			Year: <span id="carYear"></span><br>
 			Seats: <span id="carSeating"></span><br>
-			<form method="post" action="book" id="carForm">
+			<form method="post" action="confirm" id="carForm">
 				{{ csrf_field() }}
 				<input type="hidden" id="carId" name="carId" value="">
 				<input type="hidden" id="startTime" name="startTime" value="1234">
@@ -187,4 +187,3 @@
 </div>
 
 @endsection
-

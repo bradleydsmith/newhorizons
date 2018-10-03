@@ -23,6 +23,7 @@ class CreateCarsTable extends Migration
 			$table->decimal('lat', 8, 4);
 			$table->decimal('lng', 8, 4);
 			$table->boolean('retired');
+			$table->decimal('pph', 6, 2);
             $table->timestamps();
         });
     }

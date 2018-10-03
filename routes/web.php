@@ -105,3 +105,5 @@ Route::post('/car/status', 'CarStatusController@index')->name('carstatus');
 Route::post('/user/status', 'UserStatusController@index')->name('userstatus');
 
 Route::resource('/book', 'BookingController');
+Route::post('/confirm', 'ConfirmController@index')->name('confirm');
+Route::get('/confirm', 'ConfirmController@index')->name('confirm');

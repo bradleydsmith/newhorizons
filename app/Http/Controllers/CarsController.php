@@ -44,6 +44,7 @@ class CarsController extends Controller
 		$cars->rego = $request->input('rego');	
 		$cars->lat = $request->input('lat');
 		$cars->lng = $request->input('lng');
+		$cars->pph = $request->input('pph');
 		$cars->retired = false;
 		$cars->save();
 		return redirect('home');
