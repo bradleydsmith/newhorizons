@@ -26,6 +26,7 @@
 						<label class="col-sm-5 col-form-label text-md-right">Registration</label> <input type="text" class="col-md-7 form-control" name="rego"> <br /><br />
 						<label class="col-sm-5 col-form-label text-md-right">Latitude</label> <input type="text" class="col-md-7 form-control" name="lat"><br><br>
 						<label class="col-sm-5 col-form-label text-md-right">Longitude</label> <input type="text" class="col-md-7 form-control" name="lng"><br><br>
+						<label class="col-sm-5 col-form-label text-md-right">Price Per Hour</label> <input type="text" class="col-md-7 form-control" name="pph"><br><br>
 						<input type="submit" class="btn btn-primary col-md-3 offset-md-6">
 					</form>
                 </div>

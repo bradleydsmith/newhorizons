@@ -65,6 +65,11 @@
                 if (carDiv.childNodes[j].id == "carSeating") {
                     carDiv.childNodes[j].innerHTML = car.seating;
                 }
+                if (carDiv.childNodes[j].id == "carCost") {
+					carpph = ((Number(document.getElementById('hours').value) / 60) / 60) * car.pph;
+					carpph = carpph.toFixed(2);
+                    carDiv.childNodes[j].innerHTML = "$" + carpph;
+                }
             }
             carDiv.id = "car" + (i + 1);
             carDiv.style.display = "block";
@@ -139,7 +144,8 @@
 			<span id="carMake"></span>
 			<span id="carModel"></span>
 			<span id="carYear"></span><br>
-			Seats: <span id="carSeating"></span>
+			Seats: <span id="carSeating"></span><br>
+			Cost: <span id="carCost"></span>
 			<form method="post" action="book" id="carForm">
 				{{ csrf_field() }}
 				<input type="hidden" id="carId" name="carId" value="">

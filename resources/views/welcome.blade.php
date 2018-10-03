@@ -130,8 +130,11 @@
             icon = L.icon({
                 iconUrl: 'https://assets.mapquestapi.com/icon/v2/marker-' + (i+1) + '.png'
             });
+            carpph = ((Number(document.getElementById('timeSelector').value) / 60) / 60) * car.pph;
+            carpph = carpph.toFixed(2);
             var carPop = new L.popup().setContent(
                 car.year + " " + car.make + " " + car.model + "<br>Seats: " + car.seating + "<br>" +
+                "Cost: $" + carpph + "<br>" +
                 '<form style="display: inline-block;" method="post" action="book" id="carForm2">' +
                 '{{ csrf_field() }}' +
                 '<input type="hidden" id="carId" name="carId" value="' + car.id + '">' +
