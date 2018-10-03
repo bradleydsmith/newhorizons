@@ -139,19 +139,19 @@
 	</div>
 	
 	    <div id="carListOutter">
-		<div id="hiddenCar" style="display: none;">
+		<div id="hiddenCar" class="container justify-content-center" style="display: none;">
 			<span id="carMapId"></span>
 			<span id="carMake"></span>
 			<span id="carModel"></span>
 			<span id="carYear"></span><br>
 			Seats: <span id="carSeating"></span><br>
-			Cost: <span id="carCost"></span>
-			<form method="post" action="book" id="carForm">
+			Cost: <span id="carCost"></span><br>
+			<form method="post" action="book" id="carForm" style="display:inline-block">
 				{{ csrf_field() }}
 				<input type="hidden" id="carId" name="carId" value="">
 				<input type="hidden" id="startTime" name="startTime" value="1234">
 				<input type="hidden" id="endTime" name="endTime" value="2345">
-				<input type="submit" value="Book">
+				<input type="submit" class="btn btn-primary" value="Book">
 			</form>
 		</div>
 		<div id="carListInner">
