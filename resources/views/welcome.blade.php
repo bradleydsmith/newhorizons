@@ -135,7 +135,7 @@
             var carPop = new L.popup().setContent(
                 car.year + " " + car.make + " " + car.model + "<br>Seats: " + car.seating + "<br>" +
                 "Cost: $" + carpph + "<br>" +
-                '<form style="display: inline-block;" method="post" action="book" id="carForm2">' +
+                '<form style="display: inline-block;" method="post" action="confirm" id="carForm2">' +
                 '{{ csrf_field() }}' +
                 '<input type="hidden" id="carId" name="carId" value="' + car.id + '">' +
                 '<input type="hidden" id="startTime" name="startTime" value="' + startTime + '">' +
@@ -269,7 +269,7 @@
             <span id="carModel"></span>
             <span id="carYear"></span><br>
             Seats: <span id="carSeating"></span>
-            <form method="post" action="book" id="carForm">
+            <form method="post" action="confirm" id="carForm">
                 {{ csrf_field() }}
                 <input type="hidden" id="carId" name="carId" value="">
                 <input type="hidden" id="startTime" name="startTime" value="1234">

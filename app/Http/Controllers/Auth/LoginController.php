@@ -28,7 +28,7 @@ class LoginController extends Controller
     //protected $redirectTo = '/home';
     public function redirectTo() {
 		if (session()->exists('carId')) {
-			return '/book';
+			return '/confirm';
 		} else {
 			return '/home';
 		}
