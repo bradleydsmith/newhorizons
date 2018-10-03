@@ -158,16 +158,11 @@
 	</table>
 </div>
 
-	<table class="table table-striped">
-
-	    <div "id="carListOutter">
+	    <div id="carListOutter">
 		<div id="hiddenCar" style="display: none;">
-			ID: <span id="carMapId"></span><br>
-			Make: <span id="carMake"></span><br>
-			Model: <span id="carModel"></span><br>
-			Year: <span id="carYear"></span><br>
+			<span id="carYear"></span> <span id="carMake"></span> <span id="carModel"></span><br>
 			Seats: <span id="carSeating"></span><br>
-			<form method="post" action="confirm" id="carForm">
+			<form method="post" action="confirm" id="carForm" style="display:inline-block">
 				{{ csrf_field() }}
 				<input type="hidden" id="carId" name="carId" value="">
 				<input type="hidden" id="startTime" name="startTime" value="1234">
@@ -176,12 +171,11 @@
 			</form>
 			<br><br>
 		</div>
+		</div>
 		<div id="carListInner">
 			
+		
 		</div>
-		</div>
-
-	</table>
 </div>
 </div>  <!--wrapper div -->
 </div>
