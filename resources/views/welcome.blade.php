@@ -1,10 +1,8 @@
 <br>
 <br>
-
 @extends('layouts.app')
 @section('content')
 @if(Auth::check() && Auth::user()->type == "suspended")
-<div id="wrapper">
 <div class="container">
 	<div class="bookingbox">
 		Sorry, your account has been suspended from making bookings.
@@ -13,32 +11,17 @@
 </div>
 @else
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-<div id="wrapper">  
 
 <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
-
-
-
-<!-- 
-<div class="banner">
-<img class="banner-image" src="images/banner1.jpg">
-</div> -->
-</head>
-<body>
-
-<!-- <div class="thebox">
-
-<button class="bigbtn " type="button" onClick="document.getElementById('bookme').scrollIntoView()"><span>Book Now</span></button>
-<button class="bigbtn2" type="button" onClick="document.getElementById('booklater').scrollIntoView()"><span>Book Later</span></button>
-</div>
- -->
+<script src="js/jquery.documentsize.js"></script>
 
 
 <style>
 
     #map {
         height: 500px;
+        margin-top: -15px;
     }
     @media screen and (-webkit-min-device-pixel-ratio:0) {
 		.form-control {
@@ -86,8 +69,7 @@
         }
     }
     function clearCarList() {
-        carListInner = document.getElementById('carListInner');
-        carListInner.innerHTML = '';
+        
     }
     function removeUserMarker() {
         userMarker.remove();
@@ -123,8 +105,6 @@
         //window.location.hash = e.target.options.customId;
     }
     function addCars(cars) {
-        hiddenCar = document.getElementById('hiddenCar');
-        carListInner = document.getElementById('carListInner');
         for (i = 0; i < cars.length; i++) {
             car = cars[i];
             icon = L.icon({
@@ -144,41 +124,6 @@
                 '</form>'
             );
             markers.push(L.marker([car.lat, car.lng], {icon: icon, customId: "car" + (i + 1)}).addTo(mapcon).on('click', markerClick).bindPopup(carPop));
-            carDiv = hiddenCar.cloneNode(true);
-            for (j = 0; j < carDiv.childNodes.length; j++) {
-                if (carDiv.childNodes[j].id == "carForm") {
-                    for (k = 0; k < carDiv.childNodes[j].childNodes.length; k++) {
-                        if (carDiv.childNodes[j].childNodes[k].id == "carId") {
-                            carDiv.childNodes[j].childNodes[k].value = car.id;
-                        }
-                        if (carDiv.childNodes[j].childNodes[k].id == "startTime") {
-                            carDiv.childNodes[j].childNodes[k].value = startTime;
-                        }
-                        if (carDiv.childNodes[j].childNodes[k].id == "endTime") {
-                            carDiv.childNodes[j].childNodes[k].value = endTime;
-                        }
-                    }
-                    //carDiv.childNodes[j].value = car.id;
-                }
-                if (carDiv.childNodes[j].id == "carMapId") {
-                    carDiv.childNodes[j].innerHTML = (i+1);
-                }
-                if (carDiv.childNodes[j].id == "carModel") {
-                    carDiv.childNodes[j].innerHTML = car.model;
-                }
-                if (carDiv.childNodes[j].id == "carMake") {
-                    carDiv.childNodes[j].innerHTML = car.make;
-                }
-                if (carDiv.childNodes[j].id == "carYear") {
-                    carDiv.childNodes[j].innerHTML = car.year;
-                }
-                if (carDiv.childNodes[j].id == "carSeating") {
-                    carDiv.childNodes[j].innerHTML = car.seating;
-                }
-            }
-            carDiv.id = "car" + (i + 1);
-            carDiv.style.display = "block";
-            carListInner.append(carDiv);
         }
     }
     
@@ -252,38 +197,15 @@
 			goButton();
 		}
 	}
+	
+	function resize() {
+		var h = $.windowHeight();
+		var m = document.getElementById('map');
+		m.style.height = (h - m.offsetTop);
+		window.mapcon.invalidateSize();
+	}
 </script>
-<div class="container" id="bookme">
-    <div>
-        <div id="map"></div>
-    </div>
-    <br><br><br>
-
- <div class="bookingbox">   <!-- Temporary box -->
-<strong>[ Temporary box ]</strong>
-
-    <div id="carListOutter">
-        <div id="hiddenCar" style="display: none;">
-            <span id="carMapId"></span>
-            <span id="carMake"></span>
-            <span id="carModel"></span>
-            <span id="carYear"></span><br>
-            Seats: <span id="carSeating"></span>
-            <form method="post" action="confirm" id="carForm">
-                {{ csrf_field() }}
-                <input type="hidden" id="carId" name="carId" value="">
-                <input type="hidden" id="startTime" name="startTime" value="1234">
-                <input type="hidden" id="endTime" name="endTime" value="2345">
-                <input type="submit" value="Book">
-            </form>
-        </div>
-        <div id="carListInner">
-            
-        </div>
-    </div>
-</div>
-
-</div>
+<div id="map"></div>
 <div id="addrbar" style="display: none;">
 	<div class="container">
 		<div class="input-group mb-2">
@@ -303,9 +225,11 @@
     </div>
 </div>
 <script>
+	var h = $.windowHeight();
+	var m = document.getElementById('map');
+	m.style.height = (h - m.offsetTop);
+	window.addEventListener("resize", function(){resize()}, true)
     minit();
 </script>  
-
-</div> <!-- wrapper div-->
 @endif
 @endsection
