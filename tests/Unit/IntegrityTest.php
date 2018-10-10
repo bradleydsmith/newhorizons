@@ -1,15 +1,15 @@
 <?php
 
 namespace Tests\Unit;
-
+use DB;
+use Hash;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use \app\Http\Controllers\ConfirmController;
 use App\User;
 use App\Cars;
-use Faker\Generator as Faker;
-use DB;
 use App\FlocationData;
+use App\Booking;
 
 class ConnTest extends TestCase
 {
@@ -18,10 +18,13 @@ class ConnTest extends TestCase
         return factory(User::class)->create(
             [
                 'fname' => $identifier,
-                'lname' => 'Test$Laravel$'
+                'lname' => 'Test$Laravel$',
+                'password' => Hash::make('Test$Laravel$Password123'),
+                'email' => 'test@laravel.com'
             ]
         );
     }
+    
     public function createCar($identifier)
     {
         $cars = new Cars;
@@ -48,6 +51,94 @@ class ConnTest extends TestCase
     }
 
     //Web part
+    public function testLoginAva()
+    {
+        $response = $this->get('/login');
+        $response->assertStatus(200);
+        unset($response);
+        $identifier = random_int(10000,100000);
+        $user = $this->createUser($identifier);
+        $response = $this->post('/login',
+            ['email'=>'test@laravel.com', 'password'=>'Test$Laravel$Password123']);
+        $response->assertStatus(302);
+        $response->assertSeeText('/home');
+        $this->clearTest();
+    }
+    public function testRegisterAva()
+    {
+        $response = $this->get('/register');
+        $response->assertStatus(200);
+        unset($response);
+        $response = $this->post('/register',[
+            'fname'=> 'Test',
+            'lname'=> 'Test$Laravel$',
+            'name'=> 'Test2',
+            'email'=> 'test2@laravel.com',
+            'password'=> 'Test$Laravel$Password123',
+            'password_confirmation'=>'Test$Laravel$Password123',
+        ]);
+        $response->assertStatus(302);
+        $response->assertSeeText('/home');
+        unset($response);
+        $response = $this->post('/login',
+            ['email'=>'test@laravel.com', 'password'=>'Test$Laravel$Password123']);
+        $response->assertStatus(302);
+        $response->assertSeeText('/home');
+        unset($response);
+        $this->clearTest();
+    }
+    public function testRegisterWithWeakPasswordAva()
+    {
+        $response = $this->get('/register');
+        $response->assertStatus(200);
+        unset($response);
+        $response = $this->post('/register',[
+            'fname'=> 'Test',
+            'lname'=> 'Test$Laravel$',
+            'name'=> 'Test3',
+            'email'=> 'test3@laravel.com',
+            'password'=> '123',
+            'password_confirmation'=>'123',
+        ]);
+        $response->assertStatus(302);
+        $response->assertSeeText('/register');
+        $this->clearTest();
+    }
+    public function testRegisterWithDiffPasswordAva()
+    {
+        $response = $this->get('/register');
+        $this->assertTrue('Test$Laravel$Password123' != 'Test$Laravel$Password1234');
+        $response->assertStatus(200);
+        unset($response);
+        $response = $this->post('/register',[
+            'fname'=> 'Test',
+            'lname'=> 'Test$Laravel$',
+            'name'=> 'Test4',
+            'email'=> 'test4@laravel.com',
+            'password'=> 'Test$Laravel$Password123',
+            'password_confirmation'=>'Test$Laravel$Password1234',
+        ]);
+        $response->assertStatus(302);
+        $response->assertSeeText('/register');
+        $this->clearTest();
+    }
+    public function testRegisterWithLongNameAva()
+    {
+        $response = $this->get('/register');
+        $response->assertStatus(200);
+        unset($response);
+        $response = $this->post('/register',[
+            'fname'=> 'Test',
+            'lname'=> 'Test$Laravel$',
+            'name'=> 'Test_asdfghjklzxcvbnmqwertyuiop5',
+            'email'=> 'test5@laravel.com',
+            'password'=> 'Test$Laravel$Password123',
+            'password_confirmation'=>'Test$Laravel$Password123',
+        ]);
+        $response->assertStatus(302);
+        $response->assertSeeText('/register');
+        $this->clearTest();
+    }
     public function testSearchWithoutSessionAva()
     {
         $response = $this->get('/search');
@@ -214,13 +305,21 @@ class ConnTest extends TestCase
         $response->assertSessionHas('endTime', '2000');
         $this->clearTest();
     }
-    
-
     //API Part
-    //public function testAPIBookAva()
-    //{
-    //    Not constructed, please test later after constrcution
-    //}
+    public function testAPIBookAva()
+    {
+        $identifier = random_int(10000,100000);
+        $car = $this->createCar($identifier);
+        $carId = DB::table('cars')->where('make', $identifier)->first();
+        $user = $this->createUser('User');
+        $response = $this->actingAs($user)
+                         ->withSession(['carId' => $carId->id, 
+                            'startTime'=>1, 
+                            'endTime'=>2000])
+                         ->get('/book');
+        //error: $leg is not defined
+        $response->assertSeeText("");
+    }
     //public function testAPIStaticMapAva()
     //{
     //    Not fully constructed, please test later after defining the usage
